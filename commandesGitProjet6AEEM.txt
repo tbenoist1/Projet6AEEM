@@ -1,0 +1,44 @@
+//// initialiser git ////
+git init
+
+//// initialiser utilisateur ////
+git config --global user.name "Prénom Nom"
+
+//// se connecter au dépôt distant sur github ////
+git remote add origin https://github.com/tbenoist1/Projet6AEEM.git
+
+//// déposer sur le dépôt distant le contenu de la branche master ////
+git push origin master
+
+////récupérer le contenu du projet sur la branche master ////
+git pull origin master
+
+
+
+
+//// COMMANDE GIT CLASSIQUES ////
+git init
+
+git config --global user.name "Prénom Nom"
+git config --global core.editor "notepad --wait"
+git config -l //affiche la configuration du git
+
+git status //montre l'état de sauvegarde du fichier
+
+git add nomFichier
+git add *.(extension)
+git add nomDossier 
+
+git log //montre la liste des commit réalisés
+git log --author="Timothée"
+ 
+git diff //montre les différences entre le dernier Commit et le Code actuel (nomFichier, nomDossier, idCommit)
+diff --git a/index.html b/index.html
+
+git reset nomFichier //remove
+git commit -m "Titre de la sauvegarde" 
+
+git branch branche1 //créer une branche1
+git branch //affiche les branches existantes
+git branch checkout branche1
+git branch -d branche1 //supprime la branche1
