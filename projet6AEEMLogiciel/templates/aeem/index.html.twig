@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AeemController!{% endblock %}
+{% block contenu %}
+	<h1 style="text-align:center">Bienvenue !<h1>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<a class="btn btn-outline-primary btn-lg btn-block" href="/GestionEleves" role="button" style="margin-top:200px;margin-left:15px;margin-right:15px">Gestion Elèves</a>
+			<a class="btn btn-outline-primary btn-lg btn-block" href="/GestionProfesseurs" role="button" style="margin:15px">Gestion Professeurs</a> 
+			<a class="btn btn-outline-primary btn-lg btn-block" href="/GestionEtablissements" role="button" style="margin:15px">Gestion Etablissements</a> 
+			<a class="btn btn-outline-primary btn-lg btn-block" href="/GestionSubventions" role="button" style="margin:15px">Gestion Subventions</a> 
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>	
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/users/info/faursuegui/Documents/Projet/Projet6AEEM/projet6AEEMLogiciel/src/Controller/AeemController.php'|file_link(0) }}">src/Controller/AeemController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/users/info/faursuegui/Documents/Projet/Projet6AEEM/projet6AEEMLogiciel/templates/aeem/index.html.twig'|file_link(0) }}">templates/aeem/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
