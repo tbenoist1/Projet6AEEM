@@ -24,11 +24,11 @@ class AeemController extends AbstractController
     }
 
      /**
-     * @Route("/GesionProfesseurs", name="GesionProfesseurs")
+     * @Route("/GestionProfesseurs", name="GestionProfesseurs")
      */
-    public function GesionProfesseurs()
+    public function GestionProfesseurs()
     {
-        return $this->render('aeem/GesionProfesseurs.html.twig');
+        return $this->render('aeem/GestionProfesseurs.html.twig');
     }
 
      /**
