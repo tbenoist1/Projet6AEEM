@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+<h1>Formulaire d'ajout d'une mairie</h1>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Ajout d'une mairie</h5>
+        <p class="card-text">
+       		{{ form_start(vueFormulaire, {'attr': {'novalidate': 'novalidate'}}) }}
+
+       			{{ form_row(vueFormulaire.ville) }}
+       			{{ form_row(vueFormulaire.codePostal) }}
+       			{{ form_row(vueFormulaire.zone) }}
+       			{{ form_row(vueFormulaire.lienDossier) }}
+       			{{ form_row(vueFormulaire.courriel) }}
+       			{{ form_row(vueFormulaire.telephone) }}
+
+       		{{ form_end(vueFormulaire) }}
+        </p>
+    </div>
+</div>
+
+
+
+{% endblock %}
