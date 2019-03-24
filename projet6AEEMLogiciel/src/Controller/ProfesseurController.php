@@ -11,12 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/professeur")
+ * @Route("/GestionProfesseurs")
  */
 class ProfesseurController extends AbstractController
 {
     /**
-     * @Route("/", name="professeur_index", methods={"GET"})
+     * @Route("/", name="GestionProfesseurs")
+     */
+    public function GestionProfesseurs()
+    {
+        return $this->render('professeur/GestionProfesseurs.html.twig');
+    }
+
+    /**
+     * @Route("/liste", name="professeur_index", methods={"GET"})
      */
     public function index(ProfesseurRepository $professeurRepository): Response
     {
@@ -31,7 +39,7 @@ class ProfesseurController extends AbstractController
     public function new(Request $request): Response
     {
         $professeur = new Professeur();
-        $form = $this->createForm(Professeur1Type::class, $professeur);
+        $form = $this->createForm(ProfesseurType::class, $professeur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +71,7 @@ class ProfesseurController extends AbstractController
      */
     public function edit(Request $request, Professeur $professeur): Response
     {
-        $form = $this->createForm(Professeur1Type::class, $professeur);
+        $form = $this->createForm(ProfesseurType::class, $professeur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

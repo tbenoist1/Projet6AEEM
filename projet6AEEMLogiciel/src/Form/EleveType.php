@@ -35,8 +35,8 @@ class EleveType extends AbstractType
             ->add('ri')
             ->add('enveloppes')
             ->add('cheques')
-            //->add('professeurs')
-            //->add('etablissement')
+            ->add('professeurs')
+            ->add('etablissement')
         ;
     }
 
