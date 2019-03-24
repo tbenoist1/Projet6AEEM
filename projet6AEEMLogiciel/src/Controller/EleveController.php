@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Eleve;
-use App\Form\Eleve1Type;
+use App\Form\EleveType;
 use App\Repository\EleveRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

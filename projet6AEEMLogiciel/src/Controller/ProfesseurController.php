@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Professeur;
-use App\Form\Professeur1Type;
+use App\Form\ProfesseurType;
 use App\Repository\ProfesseurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

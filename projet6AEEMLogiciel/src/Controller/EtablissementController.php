@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Etablissement;
-use App\Form\Etablissement1Type;
+use App\Form\EtablissementType;
 use App\Repository\EtablissementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
