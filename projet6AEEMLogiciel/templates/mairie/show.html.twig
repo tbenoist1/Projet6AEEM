@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mairie{% endblock %}
+
+{% block body %}
+    <h1>Mairie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mairie.id }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ mairie.ville }}</td>
+            </tr>
+            <tr>
+                <th>CodePostal</th>
+                <td>{{ mairie.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Zone</th>
+                <td>{{ mairie.zone }}</td>
+            </tr>
+            <tr>
+                <th>LienDossier</th>
+                <td>{{ mairie.lienDossier }}</td>
+            </tr>
+            <tr>
+                <th>Courriel</th>
+                <td>{{ mairie.courriel }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ mairie.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mairie_index') }}">back to list</a>
+
+    <a href="{{ path('mairie_edit', {'id': mairie.id}) }}">edit</a>
+
+    {{ include('mairie/_delete_form.html.twig') }}
+{% endblock %}

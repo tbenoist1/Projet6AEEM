@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve{% endblock %}
+
+{% block body %}
+    <h1>Eleve</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ eleve.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ eleve.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ eleve.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ eleve.sexe }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ eleve.dateNaissance ? eleve.dateNaissance|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AnneeSuivie</th>
+                <td>{{ eleve.anneeSuivie }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ eleve.adresse }}</td>
+            </tr>
+            <tr>
+                <th>CodePostal</th>
+                <td>{{ eleve.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>VilleDomicile</th>
+                <td>{{ eleve.villeDomicile }}</td>
+            </tr>
+            <tr>
+                <th>Courriel</th>
+                <td>{{ eleve.courriel }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneO</th>
+                <td>{{ eleve.telephoneO }}</td>
+            </tr>
+            <tr>
+                <th>TelephoneS</th>
+                <td>{{ eleve.telephoneS }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ eleve.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ eleve.classe }}</td>
+            </tr>
+            <tr>
+                <th>DureeIntervention</th>
+                <td>{{ eleve.dureeIntervention }}</td>
+            </tr>
+            <tr>
+                <th>LieuIntervention</th>
+                <td>{{ eleve.lieuIntervention }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ eleve.contact }}</td>
+            </tr>
+            <tr>
+                <th>ContactNum</th>
+                <td>{{ eleve.contactNum }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ eleve.dateDebut ? eleve.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ eleve.dateFin ? eleve.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CertificatMedical</th>
+                <td>{{ eleve.certificatMedical ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Ri</th>
+                <td>{{ eleve.ri ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Enveloppes</th>
+                <td>{{ eleve.enveloppes ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Cheques</th>
+                <td>{{ eleve.cheques ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('eleve_index') }}">back to list</a>
+
+    <a href="{{ path('eleve_edit', {'id': eleve.id}) }}">edit</a>
+
+    {{ include('eleve/_delete_form.html.twig') }}
+{% endblock %}
