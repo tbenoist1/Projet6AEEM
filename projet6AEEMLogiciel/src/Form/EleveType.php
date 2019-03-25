@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+//use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class EleveType extends AbstractType
 {
@@ -41,7 +41,7 @@ class EleveType extends AbstractType
             ->add('contactNum')
             ->add('dateDebut' ,DateType::class ,['widget' => 'single_text'])
             ->add('dateFin' ,DateType::class ,['widget' => 'single_text'])
-            ->add('certificatMedical', CheckboxType::class, ['choices' => ['certificatMedical' => 1,
+            ->add('certificatMedical', ChoiceType::class, ['choices' => ['certificatMedical' => 1,
                                                                         'ri' => 2,
                                                                         'enveloppes' => 3,
                                                                         'chèques' => 4],
