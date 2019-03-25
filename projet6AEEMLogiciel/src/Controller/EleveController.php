@@ -11,12 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/eleve")
+ * @Route("/GestionEleves")
  */
 class EleveController extends AbstractController
 {
     /**
-     * @Route("/", name="eleve_index", methods={"GET"})
+     * @Route("/", name="GestionEleves")
+     */
+    public function GestionEleves()
+    {
+        return $this->render('eleve/GestionEleves.html.twig');
+    }
+
+    /**
+     * @Route("/liste", name="eleve_index", methods={"GET"})
      */
     public function index(EleveRepository $eleveRepository): Response
     {
@@ -31,7 +39,7 @@ class EleveController extends AbstractController
     public function new(Request $request): Response
     {
         $eleve = new Eleve();
-        $form = $this->createForm(Eleve1Type::class, $eleve);
+        $form = $this->createForm(EleveType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +71,7 @@ class EleveController extends AbstractController
      */
     public function edit(Request $request, Eleve $eleve): Response
     {
-        $form = $this->createForm(Eleve1Type::class, $eleve);
+        $form = $this->createForm(EleveType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -30,7 +30,7 @@ class ProfesseurType extends AbstractType
             ->add('cv')
             ->add('cj')
             ->add('commentaires')
-            //->add('eleves')
+            ->add('eleves')
         ;
     }
 
