@@ -50,9 +50,7 @@ class ProfesseurType extends AbstractType
             ->add('cj')
             ->add('commentaires')
 
-            //->add('eleves')
-
-            
+    ;        //->add('eleves')        
     }
 
     public function configureOptions(OptionsResolver $resolver)
