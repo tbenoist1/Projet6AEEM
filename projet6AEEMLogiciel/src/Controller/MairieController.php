@@ -11,12 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/mairie")
+ * @Route("/GestionSubventions")
  */
 class MairieController extends AbstractController
 {
     /**
-     * @Route("/", name="mairie_index", methods={"GET"})
+     * @Route("/", name="GestionSubventions")
+     */
+    public function GestionSubventions()
+    {
+        return $this->render('mairie/GestionSubventions.html.twig');
+    }
+
+    /**
+     * @Route("/liste", name="mairie_index", methods={"GET"})
      */
     public function index(MairieRepository $mairieRepository): Response
     {
@@ -31,7 +39,7 @@ class MairieController extends AbstractController
     public function new(Request $request): Response
     {
         $mairie = new Mairie();
-        $form = $this->createForm(Mairie1Type::class, $mairie);
+        $form = $this->createForm(MairieType::class, $mairie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +71,7 @@ class MairieController extends AbstractController
      */
     public function edit(Request $request, Mairie $mairie): Response
     {
-        $form = $this->createForm(Mairie1Type::class, $mairie);
+        $form = $this->createForm(MairieType::class, $mairie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

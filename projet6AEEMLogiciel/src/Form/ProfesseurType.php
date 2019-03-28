@@ -49,8 +49,12 @@ class ProfesseurType extends AbstractType
             ->add('cv')
             ->add('cj')
             ->add('commentaires')
+<<<<<<< HEAD
             //->add('eleves')
 
+=======
+            ->add('eleves')
+>>>>>>> b9a2c5086f8bd043e05ee805b0754096f39ca225
         ;
     }
 

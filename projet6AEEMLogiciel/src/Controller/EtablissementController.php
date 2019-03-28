@@ -11,12 +11,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/etablissement")
+ * @Route("/GestionEtablissements")
  */
 class EtablissementController extends AbstractController
 {
     /**
-     * @Route("/", name="etablissement_index", methods={"GET"})
+     * @Route("/", name="GestionEtablissements")
+     */
+    public function GestionEtablissements()
+    {
+        return $this->render('etablissement/GestionEtablissements.html.twig');
+    }
+
+    /**
+     * @Route("/liste", name="etablissement_index", methods={"GET"})
      */
     public function index(EtablissementRepository $etablissementRepository): Response
     {
@@ -31,7 +39,7 @@ class EtablissementController extends AbstractController
     public function new(Request $request): Response
     {
         $etablissement = new Etablissement();
-        $form = $this->createForm(Etablissement1Type::class, $etablissement);
+        $form = $this->createForm(EtablissementType::class, $etablissement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +71,7 @@ class EtablissementController extends AbstractController
      */
     public function edit(Request $request, Etablissement $etablissement): Response
     {
-        $form = $this->createForm(Etablissement1Type::class, $etablissement);
+        $form = $this->createForm(EtablissementType::class, $etablissement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
