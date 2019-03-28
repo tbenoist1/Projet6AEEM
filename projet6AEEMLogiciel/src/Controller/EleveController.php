@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/GestionEleves")
+ * @Route("/gestionEleves")
  */
 class EleveController extends AbstractController
 {
     /**
      * @Route("/", name="GestionEleves")
      */
-    public function GestionEleves()
+    public function gestionEleves()
     {
         return $this->render('eleve/GestionEleves.html.twig');
     }

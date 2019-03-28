@@ -6,6 +6,7 @@ use App\Entity\Professeur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProfesseurType extends AbstractType
 {
@@ -23,9 +24,20 @@ class ProfesseurType extends AbstractType
             ->add('situationActuelle')
             ->add('matieres')
             ->add('niveau')
-            ->add('zonesInterventions')
-            ->add('lieuxInterventions')
-            ->add('toutesMaladies')
+            ->add('zonesInterventions', ChoiceType::class, ['choices'  => ['BAB' => 'BAB',
+                                                                           'Pays Basque Intérieur' => 'Pays Basque Intérieur',
+                                                                           'Sud Pays Basque' => 'Sud Pays Basque',
+                                                                           'Sud Landes' => 'Sud Landes'],
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('lieuxInterventions', ChoiceType::class, ['choices'  => ['Domicile' => 'Domicile',
+                                                                           'Hôpital' => 'Hôpital'],
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('toutesMaladies', ChoiceType::class, ['choices'  => ['Oui' => true,
+                                                                       'Non' => false],
+                                                            'expanded' => true,
+                                                            'multiple' => false])
             ->add('voiture')
             ->add('cv')
             ->add('cj')

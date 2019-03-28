@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/GestionSubventions")
+ * @Route("/gestionSubventions")
  */
 class MairieController extends AbstractController
 {
     /**
      * @Route("/", name="GestionSubventions")
      */
-    public function GestionSubventions()
+    public function gestionSubventions()
     {
         return $this->render('mairie/GestionSubventions.html.twig');
     }
@@ -34,9 +34,9 @@ class MairieController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="mairie_new", methods={"GET","POST"})
+     * @Route("/ajouterMairie", name="AjouterMairie", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function ajouterMairie(Request $request): Response
     {
         $mairie = new Mairie();
         $form = $this->createForm(MairieType::class, $mairie);
@@ -47,14 +47,47 @@ class MairieController extends AbstractController
             $entityManager->persist($mairie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('mairie_index');
+            return $this->redirectToRoute('GestionSubventions');
         }
 
-        return $this->render('mairie/new.html.twig', [
+        return $this->render('mairie/AjouterMairie.html.twig', [
             'mairie' => $mairie,
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
+     */
+    public function supprimerMairie(MairieRepository $mairieRepository): Response
+    {
+        return $this->render('mairie/SupprimerMairie.html.twig', [
+            'mairies' => $mairieRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/modifierMairie", name="ModifierMairie", methods={"GET"})
+     */
+    public function modifierMairie(MairieRepository $mairieRepository): Response
+    {
+        return $this->render('mairie/ModifierMairie.html.twig', [
+            'mairies' => $mairieRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/consulterMairie", name="ConsulterMairie", methods={"GET"})
+     */
+   public function consulterMairie(MairieRepository $mairieRepository): Response
+    {
+        return $this->render('mairie/ConsulterMairie.html.twig', [
+            'mairies' => $mairieRepository->findAll(),
+        ]);
+    }
+
+
+
 
     /**
      * @Route("/{id}", name="mairie_show", methods={"GET"})
