@@ -8,7 +8,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+<<<<<<< HEAD
 //use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+=======
+>>>>>>> agencementFormulaire
 
 class EleveType extends AbstractType
 {
@@ -45,7 +48,10 @@ class EleveType extends AbstractType
                                                                         'ri' => 2,
                                                                         'enveloppes' => 3,
                                                                         'chèques' => 4],
+<<<<<<< HEAD
                                                             'label' => ' ',
+=======
+>>>>>>> agencementFormulaire
                                                             'expanded' => true,
                                                             'multiple' => true])
             //->add('professeurs')
