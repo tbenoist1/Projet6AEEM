@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Mairie;
-use App\Form\Mairie1Type;
+use App\Form\MairieType;
 use App\Repository\MairieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
