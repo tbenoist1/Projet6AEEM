@@ -23,7 +23,12 @@ class ProfesseurType extends AbstractType
             ->add('telephoneS')
             ->add('situationActuelle')
             ->add('matieres')
-            ->add('niveau')
+//ttttttt
+            ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
+                                                              'Collège' => 'Collège',
+                                                              'Lycée' => 'Lycée'],
+                                                'expanded' => false,
+                                                'multiple' => false])
             ->add('zonesInterventions', ChoiceType::class, ['choices'  => ['BAB' => 'BAB',
                                                                            'Pays Basque Intérieur' => 'Pays Basque Intérieur',
                                                                            'Sud Pays Basque' => 'Sud Pays Basque',
@@ -38,12 +43,12 @@ class ProfesseurType extends AbstractType
                                                                        'Non' => false],
                                                             'expanded' => true,
                                                             'multiple' => false])
-            ->add('voiture')
+            ->add('voiture')        
             ->add('cv')
             ->add('cj')
-            ->add('commentaires')
-            ->add('eleves')
-        ;
+            ->add('commentaires')       
+            //->add('eleves') 
+            ;        
     }
 
     public function configureOptions(OptionsResolver $resolver)
