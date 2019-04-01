@@ -1,16 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajout Mairie{% endblock %}
+{% block title %}Modifier Mairie{% endblock %}
 
 {% block contenu %}
-<<<<<<< HEAD
-
+</div>
 	<div class="card" style="margin:15px;">
-=======
-   	<div class="card" style="margin:15px;">
->>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
 	  <div class="card-header">
-	    <H1 style="text-align:center;">Ajouter mairie</H1>
+	    <H1 style="text-align:center;">odifier mairie</H1>
 	  </div>
 	  <div class="card-body">
 	    <h5 class="card-title">Informations générales</h5>
@@ -52,14 +48,6 @@
     		</div>
     	</div>
           {{ form_widget(form) }}
-<<<<<<< HEAD
-          <button class="btn btn-dark" style="button-align:right;">Enregistrer</button>
-      {{ form_end(form) }}
-	  </div>
-	</div>
-
-{% endblock %}
-=======
 
           <div class="container-fluid">
           	<div class="row">
@@ -71,8 +59,7 @@
           	</div>
           </div>
       {{ form_end(form) }}
-      <a href="{{ path('GestionSubventions') }}">Retour</a>
+      <a href="{{ path('ModifierMairie') }}">Retour à la liste</a>
 	  </div>
 	</div>
 {% endblock %}
->>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064

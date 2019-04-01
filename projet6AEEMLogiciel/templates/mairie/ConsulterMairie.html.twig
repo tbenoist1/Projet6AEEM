@@ -6,7 +6,11 @@
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
+<<<<<<< HEAD
             <H1>Consulter mairie</H1>
+=======
+            <H1 style="text-align:center;">Consulter mairie</H1>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
         </div>
         <div class="card-body">
             <table class="table">
@@ -25,7 +29,11 @@
                         <td>{{ mairie.zone }}</td>
                         <td>{{ mairie.lienDossier }}</td>
                         <td>
+<<<<<<< HEAD
                             <a href="{{ path('mairie_show', {'id': mairie.id}) }}">Consulter</a>
+=======
+                            <a href="{{ path('ConsulterMairieId', {'id': mairie.id}) }}">Consulter</a>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
                             
                         </td>
                     </tr>
@@ -33,9 +41,18 @@
                     <tr>
                         <td colspan="8">Pas de valeurs trouvées</td>
                     </tr>
+<<<<<<< HEAD
                 {% endfor %}
                 </tbody>
             </table>
+=======
+
+                    <a href="{{ path('GestionSubventions') }}">Retour</a>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('GestionSubventions') }}">Retour</a>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
         </div>
     </div>            
 {% endblock %}

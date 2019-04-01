@@ -470,5 +470,9 @@ class Eleve
 
     public function __toString(){
         return $this->getNom();
+<<<<<<< HEAD
     }
+=======
+    }   
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
 }

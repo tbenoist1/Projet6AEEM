@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MairieController extends AbstractController
 {
+    
+    //-------------------------------Accueil------------------------------//    
+
     /**
      * @Route("/", name="GestionSubventions")
      */
@@ -32,6 +35,11 @@ class MairieController extends AbstractController
             'mairies' => $mairieRepository->findAll(),
         ]);
     }
+
+
+
+
+    //-------------------------------Ajouter------------------------------//
 
     /**
      * @Route("/ajouterMairie", name="AjouterMairie", methods={"GET","POST"})
@@ -56,8 +64,14 @@ class MairieController extends AbstractController
         ]);
     }
 
+
+
+
+    //-------------------------------Supprimer------------------------------//
+
     /**
      * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
+<<<<<<< HEAD
      */
     public function supprimerMairie(MairieRepository $mairieRepository): Response
     {
@@ -91,40 +105,20 @@ class MairieController extends AbstractController
 
     /**
      * @Route("/{id}", name="mairie_show", methods={"GET"})
+=======
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
      */
-    public function show(Mairie $mairie): Response
+    public function supprimerMairie(MairieRepository $mairieRepository): Response
     {
-        return $this->render('mairie/show.html.twig', [
-            'mairie' => $mairie,
+        return $this->render('mairie/SupprimerMairie.html.twig', [
+            'mairies' => $mairieRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="mairie_edit", methods={"GET","POST"})
+     * @Route("/supprimerMairie/{id}", name="SupprimerMairieId", methods={"DELETE"})
      */
-    public function edit(Request $request, Mairie $mairie): Response
-    {
-        $form = $this->createForm(MairieType::class, $mairie);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('mairie_index', [
-                'id' => $mairie->getId(),
-            ]);
-        }
-
-        return $this->render('mairie/edit.html.twig', [
-            'mairie' => $mairie,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="mairie_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Mairie $mairie): Response
+    public function supprimerMairieId(Request $request, Mairie $mairie): Response
     {
         if ($this->isCsrfTokenValid('delete'.$mairie->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -132,6 +126,79 @@ class MairieController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('mairie_index');
+        return $this->redirectToRoute('SupprimerMairie');
     }
+
+
+
+
+    //-------------------------------Consuter------------------------------//
+
+    /**
+     * @Route("/consulterMairie", name="ConsulterMairie", methods={"GET"})
+     */
+    public function consulterMairie(MairieRepository $mairieRepository): Response
+     {
+         return $this->render('mairie/ConsulterMairie.html.twig', [
+             'mairies' => $mairieRepository->findAll(),
+         ]);
+     }
+
+    /**
+     * @Route("/consulterMairie/{id}", name="ConsulterMairieId", methods={"GET"})
+     */
+    public function consulterMairieId(Mairie $mairie, Request $request): Response
+    {
+       $formulaireMairie = $this->createForm(MairieType::class, $mairie);
+
+        $formulaireMairie->handleRequest($request);
+         if ($formulaireMairie->isSubmitted() && $formulaireMairie->isValid())
+         {
+            // Enregistrer la ressource en base de donnée
+            $manager->persist($mairie);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('gestionSubventions');
+         }
+        // Afficher la page présentant le formulaire d'ajout d'une mairie
+        return $this->render('mairie/ConsulterMairieId.html.twig', ['form' => $formulaireMairie->createView(), 'action'=>"modifier"]);
+    }
+
+
+
+
+    //-------------------------------Modifier------------------------------//
+
+    /**
+     * @Route("/modifierMairie", name="ModifierMairie", methods={"GET"})
+     */
+    public function modifierMairie(MairieRepository $mairieRepository): Response
+    {
+        return $this->render('mairie/ModifierMairie.html.twig', [
+            'mairies' => $mairieRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/modifierMairie/{id}", name="ModifierMairieId", methods={"GET","POST"})
+     */
+    public function modifierMairieId(Request $request, Mairie $mairie): Response
+    {
+        $form = $this->createForm(MairieType::class, $mairie);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ModifierMairie', [
+                'id' => $mairie->getId(),
+            ]);
+        }
+
+        return $this->render('mairie/ModifierMairieId.html.twig', [
+            'mairie' => $mairie,
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

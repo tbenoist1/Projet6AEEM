@@ -6,7 +6,11 @@
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
+<<<<<<< HEAD
             <H1>Supprimer mairie</H1>
+=======
+            <H1 style="text-align:center;">Supprimer mairie</H1>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
         </div>
         <div class="card-body">
             <table class="table">
@@ -25,7 +29,11 @@
                         <td>{{ mairie.zone }}</td>
                         <td>{{ mairie.lienDossier }}</td>
                         <td>
+<<<<<<< HEAD
                             {{ include('mairie/_delete_form.html.twig') }}
+=======
+                            {{ include('mairie/SupprimerMairieId.html.twig') }}
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
                             
                         </td>
                     </tr>
@@ -36,6 +44,10 @@
                 {% endfor %}
                 </tbody>
             </table>
+<<<<<<< HEAD
+=======
+            <a href="{{ path('GestionSubventions') }}">Retour</a>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
         </div>
     </div>            
 {% endblock %}
