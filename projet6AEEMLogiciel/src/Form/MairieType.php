@@ -6,6 +6,7 @@ use App\Entity\Mairie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class MairieType extends AbstractType
 {
@@ -14,7 +15,10 @@ class MairieType extends AbstractType
         $builder
             ->add('ville')
             ->add('codePostal')
-            ->add('zone')
+            ->add('zone', ChoiceType::class, ['choices' => ['BAB' => 'BAB',
+                                                            'Pays Basque Intérieur' => 'Pays Basque Intérieur',
+                                                            'Sud Pays Basque' => 'Sud Pays Basque',
+                                                            'Sud Landes' => 'Sud Landes']])
             ->add('lienDossier')
             ->add('courriel')
             ->add('telephone')
