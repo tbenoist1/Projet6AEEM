@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EleveController extends AbstractController
 {
+
+    //-------------------------------Accueil------------------------------// 
+    
     /**
      * @Route("/", name="GestionEleves")
      */
@@ -32,6 +35,10 @@ class EleveController extends AbstractController
             'eleves' => $eleveRepository->findAll(),
         ]);
     }
+    
+
+    //-------------------------------Ajouter------------------------------//
+
     /**
      * @Route("/ajouterEleve", name="AjouterEleve", methods={"GET","POST"})
      */
@@ -55,42 +62,24 @@ class EleveController extends AbstractController
         ]);
     }
 
+    
+
+    //-------------------------------Supprimer------------------------------//
+
     /**
-     * @Route("/{id}", name="eleve_show", methods={"GET"})
+     * @Route("/{id}", name="SupprimerEleve", methods={"GET"})
      */
-    public function show(Eleve $eleve): Response
+    public function supprimerEleve(EleveRepository $eleveRepository): Response
     {
-        return $this->render('eleve/show.html.twig', [
-            'eleve' => $eleve,
+        return $this->render('eleve/SupprimerEleve.html.twig', [
+            'eleve' => $eleveRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="eleve_edit", methods={"GET","POST"})
+     * @Route("/supprimerEleve/{id}", name="SupprimerEleveId", methods={"DELETE"})
      */
-    public function edit(Request $request, Eleve $eleve): Response
-    {
-        $form = $this->createForm(EleveType::class, $eleve);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('eleve_index', [
-                'id' => $eleve->getId(),
-            ]);
-        }
-
-        return $this->render('eleve/edit.html.twig', [
-            'eleve' => $eleve,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="eleve_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Eleve $eleve): Response
+    public function supprimerEleveId(Request $request, Eleve $eleve): Response
     {
         if ($this->isCsrfTokenValid('delete'.$eleve->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -98,6 +87,76 @@ class EleveController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('eleve_index');
+        return $this->redirectToRoute('SupprimerEleve');
+    }
+
+    
+
+    //-------------------------------Consuter------------------------------//
+
+    /**
+     * @Route("/consulterEleve", name="ConsulterEleve", methods={"GET"})
+     */
+    public function consulterEleve(EleveRepository $eleveRepository): Response
+     {
+         return $this->render('eleve/ConsulterEleve.html.twig', [
+             'eleves' => $eleveRepository->findAll(),
+         ]);
+     }
+
+    /**
+     * @Route("/consulterEleve/{id}", name="ConsulterEleveId", methods={"GET"})
+     */
+    public function consulterEleveId(Eleve $eleve, Request $request): Response
+    {
+       $formulaireEleve = $this->createForm(EleveType::class, $eleve);
+
+        $formulaireEleve->handleRequest($request);
+         if ($formulaireEleve->isSubmitted() && $formulaireEleve->isValid())
+         {
+            // Enregistrer la ressource en base de donnée
+            $manager->persist($eleve);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('gestionEleves');
+         }
+        // Afficher la page présentant le formulaire d'ajout d'un eleve
+        return $this->render('eleve/ConsulterEleveId.html.twig', ['form' => $formulaireEleve->createView(), 'action'=>"modifier"]);
+    }
+
+    
+
+    //-------------------------------Modifier------------------------------//
+
+    /**
+     * @Route("/modifierEleve", name="ModifierEleve", methods={"GET"})
+     */
+    public function modifierEleve(EleveRepository $eleveRepository): Response
+    {
+        return $this->render('eleve/ModifierEleve.html.twig', [
+            'eleves' => $eleveRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/modifierEleve/{id}", name="ModifierEleveId", methods={"GET","POST"})
+     */
+    public function modifierEleveId(Request $request, Eleve $eleve): Response
+    {
+        $form = $this->createForm(EleveType::class, $eleve);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ModifierEleve', [
+                'id' => $eleve->getId(),
+            ]);
+        }
+
+        return $this->render('eleve/ModifierEleveId.html.twig', [
+            'eleve' => $eleve,
+            'form' => $form->createView(),
+        ]);
     }
 }

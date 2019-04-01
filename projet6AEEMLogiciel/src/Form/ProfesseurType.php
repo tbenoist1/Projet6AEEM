@@ -23,10 +23,6 @@ class ProfesseurType extends AbstractType
             ->add('telephoneS')
             ->add('situationActuelle')
             ->add('matieres')
-<<<<<<< HEAD
-=======
-//ttttttt
->>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
             ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
@@ -46,21 +42,12 @@ class ProfesseurType extends AbstractType
                                                                        'Non' => false],
                                                             'expanded' => true,
                                                             'multiple' => false])
-<<<<<<< HEAD
             ->add('voiture')
             ->add('cv')
             ->add('cj')
             ->add('commentaires')
             //->add('eleves')
-            ;
-=======
-            ->add('voiture')        
-            ->add('cv')
-            ->add('cj')
-            ->add('commentaires')       
-            //->add('eleves') 
-            ;        
->>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

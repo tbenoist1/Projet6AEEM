@@ -70,43 +70,7 @@ class MairieController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
-<<<<<<< HEAD
-     */
-    public function supprimerMairie(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/SupprimerMairie.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/modifierMairie", name="ModifierMairie", methods={"GET"})
-     */
-    public function modifierMairie(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/ModifierMairie.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/consulterMairie", name="ConsulterMairie", methods={"GET"})
-     */
-   public function consulterMairie(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/ConsulterMairie.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
-
-
-
-
-    /**
      * @Route("/{id}", name="mairie_show", methods={"GET"})
-=======
->>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
      */
     public function supprimerMairie(MairieRepository $mairieRepository): Response
     {

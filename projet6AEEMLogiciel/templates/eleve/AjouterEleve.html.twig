@@ -13,6 +13,13 @@
       {{ form_start(form) }}
       <div class="row">
     		<div class="col-md-12">
+        <div class="row">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+        {{ form_row(form.anneeSuivie) }}
+        </div>
+        </div>
     			<div class="row">
     				<div class="col-md-4">
             {{ form_row(form.nom) }}
@@ -26,6 +33,78 @@
             <div class="col-md-3">
             {{ form_row(form.dateNaissance) }}
     				</div>
+          </div>
+            <div class="row">
+              <div class="col-md-12">
+              {{ form_row(form.adresse) }}
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-md-2">
+            {{ form_row(form.codePostal) }}
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.villeDomicile) }}
+            </div>
+            <div class="col-md-5">
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+            {{ form_row(form.courriel) }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.telephoneO) }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.telephoneS) }}
+            </div>
+            <div class="col-md-2">
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+            {{ 'établissement' }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.niveau) }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.classe) }}
+            </div>
+            <div class="col-md-2">
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3">
+            {{ form_row(form.dureeIntervention) }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.lieuIntervention) }}
+            </div>
+            <div class="col-md-6">
+            {{ form_row(form.contact) }}
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+            {{ form_row(form.contactNum) }}
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3">
+            {{ form_row(form.dateDebut) }}
+            </div>
+            <div class="col-md-3">
+            {{ form_row(form.dateFin) }}
+            </div>
+            <div class="col-md-6">
+            </div>
+            </div>
     			</div>
         </div>
           {{ form_widget(form) }}
