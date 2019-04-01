@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Mairie{% endblock %}
+
+{% block contenu %}
+     
+    <div class="card" style="margin:15px;">
+        <div class="card-header">
+            <H1>Modifier mairie</H1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ville</th>
+                        <th>Zone</th>
+                        <th>LienDossier</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mairie in mairies %}
+                    <tr>
+                        <td>{{ mairie.ville }}</td>
+                        <td>{{ mairie.zone }}</td>
+                        <td>{{ mairie.lienDossier }}</td>
+                        <td>
+                            <a href="{{ path('mairie_edit', {'id': mairie.id}) }}">Modifier</a>
+                            
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">Pas de valeurs trouvées</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>            
+{% endblock %}

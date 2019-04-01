@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/GestionEleves")
+ * @Route("/gestionEleves")
  */
 class EleveController extends AbstractController
 {
     /**
      * @Route("/", name="GestionEleves")
      */
-    public function GestionEleves()
+    public function gestionEleves()
     {
         return $this->render('eleve/GestionEleves.html.twig');
     }
@@ -32,11 +32,10 @@ class EleveController extends AbstractController
             'eleves' => $eleveRepository->findAll(),
         ]);
     }
-
     /**
-     * @Route("/new", name="eleve_new", methods={"GET","POST"})
+     * @Route("/ajouterEleve", name="AjouterEleve", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function ajouterEleve(Request $request): Response
     {
         $eleve = new Eleve();
         $form = $this->createForm(EleveType::class, $eleve);
@@ -47,10 +46,10 @@ class EleveController extends AbstractController
             $entityManager->persist($eleve);
             $entityManager->flush();
 
-            return $this->redirectToRoute('eleve_index');
+            return $this->redirectToRoute('GestionEleves');
         }
 
-        return $this->render('eleve/new.html.twig', [
+        return $this->render('eleve/AjouterEleve.html.twig', [
             'eleve' => $eleve,
             'form' => $form->createView(),
         ]);

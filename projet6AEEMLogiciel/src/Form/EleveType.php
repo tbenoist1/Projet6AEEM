@@ -15,23 +15,23 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('anneeSuivie')
             ->add('nom')
             ->add('prenom')
-            ->add('sexe' ,ChoiceType::class, ['choices' => ['G' => 1,
-                                                            'F' => 2],
-                                                'expanded' => true,
-                                                'multiple' => false])
+            ->add('sexe' ,ChoiceType::class, ['choices' => ['H' => 'Homme',
+                                                            'F' => 'Femme'],
+                                              'expanded' => true,
+                                              'multiple' => false])
             ->add('dateNaissance' ,DateType::class ,['widget' => 'single_text'])
-            ->add('anneeSuivie')
             ->add('adresse')
             ->add('codePostal')
             ->add('villeDomicile')
             ->add('courriel')
             ->add('telephoneO')
             ->add('telephoneS')
-            ->add('niveau', ChoiceType::class, ['choices' => ['primaire' => 1,
-                                                                'collège' => 2,
-                                                                'lycée' => 3],
+            ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
+                                                              'Collège' => 'Collège',
+                                                              'Lycée' => 'Lycée'],
                                                 'expanded' => false,
                                                 'multiple' => false])
             ->add('classe')
@@ -41,10 +41,10 @@ class EleveType extends AbstractType
             ->add('contactNum')
             ->add('dateDebut' ,DateType::class ,['widget' => 'single_text'])
             ->add('dateFin' ,DateType::class ,['widget' => 'single_text'])
-            ->add('certificatMedical', ChoiceType::class, ['choices' => ['certificatMedical' => 1,
-                                                                        'ri' => 2,
-                                                                        'enveloppes' => 3,
-                                                                        'chèques' => 4],
+            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical',
+                                                                         'RI' => 'RI',
+                                                                         'Enveloppes' => 'Enveloppes',
+                                                                         'Chèques' => 'Chèques'],
                                                             'label' => ' ',
                                                             'expanded' => true,
                                                             'multiple' => true])
