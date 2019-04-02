@@ -15,9 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EleveController extends AbstractController
 {
-    
-    //-------------------------------Accueil------------------------------//    
 
+    //-------------------------------Accueil------------------------------// 
+    
     /**
      * @Route("/", name="GestionEleves")
      */
@@ -25,7 +25,6 @@ class EleveController extends AbstractController
     {
         return $this->render('eleve/GestionEleves.html.twig');
     }
-
 
 
 
@@ -61,7 +60,7 @@ class EleveController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/supprimerEleve", name="SupprimerEleve", methods={"GET"})
+     * @Route("/{id}", name="SupprimerEleve", methods={"GET"})
      */
     public function supprimerEleve(EleveRepository $eleveRepository): Response
     {
@@ -157,3 +156,4 @@ class EleveController extends AbstractController
     }
 
 }
+

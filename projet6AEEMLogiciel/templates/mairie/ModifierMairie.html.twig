@@ -6,7 +6,11 @@
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
+<<<<<<< HEAD
+            <H1>Modifier mairie</H1>
+=======
             <H1 style="text-align:center;">Modifier mairie</H1>
+>>>>>>> 3b848b66abf22f29de2546f56f6fd485a9ed3064
         </div>
         <div class="card-body">
             <table class="table">
@@ -25,7 +29,8 @@
                         <td>{{ mairie.zone }}</td>
                         <td>{{ mairie.lienDossier }}</td>
                         <td>
-                            <a href="{{ path('ModifierMairieId', {'id': mairie.id}) }}">Modifier</a>
+                    <a href="{{ path('ModifierMairieId', {'id': mairie.id}) }}">Modifier</a>
+
                             
                         </td>
                     </tr>
@@ -37,6 +42,7 @@
                 </tbody>
             </table>
             <a href="{{ path('GestionSubventions') }}">Retour</a>
+
         </div>
     </div>            
 {% endblock %}

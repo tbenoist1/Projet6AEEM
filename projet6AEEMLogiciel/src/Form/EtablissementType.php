@@ -6,6 +6,7 @@ use App\Entity\Etablissement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EtablissementType extends AbstractType
 {
@@ -13,7 +14,11 @@ class EtablissementType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('type')
+            ->add('type', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
+                                                            'Collège' => 'Collège',
+                                                            'Lycée' => 'Lycée'],
+                                              'expanded' => false,
+                                              'multiple' => false])
             ->add('adresse')
             ->add('codePostal')
             ->add('ville')

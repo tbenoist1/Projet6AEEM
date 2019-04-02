@@ -8,13 +8,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-//use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class EleveType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('anneeSuivie')
             ->add('nom')
             ->add('prenom')
             ->add('sexe' ,ChoiceType::class, ['choices' => ['H' => 'Homme',
@@ -22,7 +22,6 @@ class EleveType extends AbstractType
                                               'expanded' => true,
                                               'multiple' => false])
             ->add('dateNaissance' ,DateType::class ,['widget' => 'single_text'])
-            ->add('anneeSuivie')
             ->add('adresse')
             ->add('codePostal')
             ->add('villeDomicile')
@@ -41,10 +40,19 @@ class EleveType extends AbstractType
             ->add('contactNum')
             ->add('dateDebut' ,DateType::class ,['widget' => 'single_text'])
             ->add('dateFin' ,DateType::class ,['widget' => 'single_text'])
-            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical',
-                                                                         'RI' => 'RI',
-                                                                         'Enveloppes' => 'Enveloppes',
-                                                                         'Chèques' => 'Chèques'],
+            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('ri', ChoiceType::class, ['choices' => ['RI' => 'RI'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('enveloppes', ChoiceType::class, ['choices' => ['Enveloppes' => 'Enveloppes'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('cheques', ChoiceType::class, ['choices' => ['Chèques' => 'Chèques'],
                                                             'label' => ' ',
                                                             'expanded' => true,
                                                             'multiple' => true])

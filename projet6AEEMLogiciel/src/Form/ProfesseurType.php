@@ -21,9 +21,11 @@ class ProfesseurType extends AbstractType
             ->add('courriel')
             ->add('telephoneO')
             ->add('telephoneS')
-            ->add('situationActuelle')
+            ->add('situationActuelle', ChoiceType::class, ['choices'  => ['Actif' => true,
+                                                                          'Retraité' => false],
+                                                            'expanded' => true,
+                                                            'multiple' => false])
             ->add('matieres')
-//ttttttt
             ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
@@ -43,12 +45,21 @@ class ProfesseurType extends AbstractType
                                                                        'Non' => false],
                                                             'expanded' => true,
                                                             'multiple' => false])
-            ->add('voiture')        
-            ->add('cv')
-            ->add('cj')
-            ->add('commentaires')       
-            //->add('eleves') 
-            ;        
+            ->add('voiture', ChoiceType::class, ['choices'  => ['Oui' => true,
+                                                                'Non' => false],
+                                                            'expanded' => true,
+                                                            'multiple' => false])
+            ->add('cv', ChoiceType::class, ['choices' => ['CV' => 'CV'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('cj', ChoiceType::class, ['choices' => ['CJ' => 'CJ'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('commentaires')
+            //->add('eleves')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

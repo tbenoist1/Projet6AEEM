@@ -6,6 +6,7 @@
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
+            <H1>Supprimer mairie</H1>
             <H1 style="text-align:center;">Supprimer mairie</H1>
         </div>
         <div class="card-body">
@@ -25,6 +26,7 @@
                         <td>{{ mairie.zone }}</td>
                         <td>{{ mairie.lienDossier }}</td>
                         <td>
+                            {{ include('mairie/_delete_form.html.twig') }}
                             {{ include('mairie/SupprimerMairieId.html.twig') }}
                             
                         </td>

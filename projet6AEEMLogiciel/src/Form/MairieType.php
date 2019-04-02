@@ -18,7 +18,9 @@ class MairieType extends AbstractType
             ->add('zone', ChoiceType::class, ['choices' => ['BAB' => 'BAB',
                                                             'Pays Basque Intérieur' => 'Pays Basque Intérieur',
                                                             'Sud Pays Basque' => 'Sud Pays Basque',
-                                                            'Sud Landes' => 'Sud Landes']])
+                                                            'Sud Landes' => 'Sud Landes'],
+                                              'expanded' => false,
+                                              'multiple' => false])
             ->add('lienDossier')
             ->add('courriel')
             ->add('telephone')

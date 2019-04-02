@@ -60,7 +60,7 @@ class MairieController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
+     * @Route("/{id}", name="mairie_show", methods={"GET"})
      */
     public function supprimerMairie(MairieRepository $mairieRepository): Response
     {
