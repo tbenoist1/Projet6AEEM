@@ -33,10 +33,12 @@ class EtablissementController extends AbstractController
         ]);
     }
 
+    //-------------------------------Ajouter------------------------------//
+
     /**
-     * @Route("/new", name="etablissement_new", methods={"GET","POST"})
+     * @Route("/ajouterEtablissement", name="AjouterEtablissement", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function ajouterEtablissement(Request $request): Response
     {
         $etablissement = new Etablissement();
         $form = $this->createForm(EtablissementType::class, $etablissement);
@@ -47,10 +49,10 @@ class EtablissementController extends AbstractController
             $entityManager->persist($etablissement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('etablissement_index');
+            return $this->redirectToRoute('GestionEtablissements');
         }
 
-        return $this->render('etablissement/new.html.twig', [
+        return $this->render('etablissement/AjouterEtablissement.html.twig', [
             'etablissement' => $etablissement,
             'form' => $form->createView(),
         ]);

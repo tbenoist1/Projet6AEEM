@@ -9,17 +9,21 @@
 	    <H1 style="text-align:center;">Ajouter élève</H1>
 	  </div>
 	  <div class="card-body">
-	    <h5 class="card-title">Informations générales</h5>
+	    
       {{ form_start(form) }}
       <div class="row">
-    		<div class="col-md-12">
+        <div class="col-md-12">
         <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-1">
+        {{ 'carré' }}
+        </div>
+        <div class="col-md-9">
         </div>
         <div class="col-md-2">
         {{ form_row(form.anneeSuivie) }}
         </div>
-        </div>
+        </div><h5 class="card-title">Informations générales</h5>
+      
     			<div class="row">
     				<div class="col-md-4">
             {{ form_row(form.nom) }}
@@ -103,6 +107,22 @@
             {{ form_row(form.dateFin) }}
             </div>
             <div class="col-md-6">
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-2">
+            {{ form_row(form.certificatMedical) }}
+            </div>
+            <div class="col-md-2">
+            {{ form_row(form.ri) }}
+            </div>
+            <div class="col-md-2">
+            {{ form_row(form.enveloppes) }}
+            </div>
+            <div class="col-md-2">
+            {{ form_row(form.cheques) }}
+            </div>
+            <div class="col-md-4">
             </div>
             </div>
     			</div>

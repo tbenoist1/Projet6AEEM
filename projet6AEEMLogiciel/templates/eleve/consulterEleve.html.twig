@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Consulter Mairie{% endblock %}
+{% block title %}Consulter Eleve{% endblock %}
 
 {% block contenu %}
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
-            <H1>Consulter mairie</H1>
-            <H1 style="text-align:center;">Consulter mairie</H1>
+            <H1>Consulter élève</H1>
+            <H1 style="text-align:center;">Consulter élève</H1>
         </div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Ville</th>
-                        <th>Zone</th>
-                        <th>LienDossier</th>
+                        <th>nom</th>
+                        <th>prenom</th>
+                        <th>classe</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for mairie in mairies %}
+                {% for eleve in eleves %}
                     <tr>
-                        <td>{{ mairie.ville }}</td>
-                        <td>{{ mairie.zone }}</td>
-                        <td>{{ mairie.lienDossier }}</td>
+                        <td>{{ eleve.nom }}</td>
+                        <td>{{ eleve.prenom }}</td>
+                        <td>{{ eleve.classe }}</td>
                         <td>
                             <a href="{{ path('mairie_show', {'id': mairie.id}) }}">Consulter</a>
                             <a href="{{ path('ConsulterMairieId', {'id': mairie.id}) }}">Consulter</a>                            

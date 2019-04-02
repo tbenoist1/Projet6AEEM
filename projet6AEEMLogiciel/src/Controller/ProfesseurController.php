@@ -33,10 +33,12 @@ class ProfesseurController extends AbstractController
         ]);
     }
 
+    //-------------------------------Ajouter------------------------------//
+
     /**
-     * @Route("/new", name="professeur_new", methods={"GET","POST"})
+     * @Route("/ajouterProfesseur", name="AjouterProfesseur", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function ajouterProfesseur(Request $request): Response
     {
         $professeur = new Professeur();
         $form = $this->createForm(ProfesseurType::class, $professeur);
@@ -47,10 +49,10 @@ class ProfesseurController extends AbstractController
             $entityManager->persist($professeur);
             $entityManager->flush();
 
-            return $this->redirectToRoute('professeur_index');
+            return $this->redirectToRoute('GestionProfesseurs');
         }
 
-        return $this->render('professeur/new.html.twig', [
+        return $this->render('professeur/AjouterProfesseur.html.twig', [
             'professeur' => $professeur,
             'form' => $form->createView(),
         ]);

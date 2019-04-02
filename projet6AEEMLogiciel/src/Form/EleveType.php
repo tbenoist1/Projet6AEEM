@@ -37,13 +37,22 @@ class EleveType extends AbstractType
             ->add('dureeIntervention')
             ->add('lieuIntervention')
             ->add('contact')
-            ->add('contactNum'/*, 'label' => ' '*/)
+            ->add('contactNum')
             ->add('dateDebut' ,DateType::class ,['widget' => 'single_text'])
             ->add('dateFin' ,DateType::class ,['widget' => 'single_text'])
-            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical',
-                                                                         'RI' => 'RI',
-                                                                         'Enveloppes' => 'Enveloppes',
-                                                                         'Chèques' => 'Chèques'],
+            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('ri', ChoiceType::class, ['choices' => ['RI' => 'RI'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('enveloppes', ChoiceType::class, ['choices' => ['Enveloppes' => 'Enveloppes'],
+                                                            'label' => ' ',
+                                                            'expanded' => true,
+                                                            'multiple' => true])
+            ->add('cheques', ChoiceType::class, ['choices' => ['Chèques' => 'Chèques'],
                                                             'label' => ' ',
                                                             'expanded' => true,
                                                             'multiple' => true])
