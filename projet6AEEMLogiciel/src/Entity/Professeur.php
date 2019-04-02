@@ -64,11 +64,6 @@ class Professeur
     private $situationActuelle;
 
     /**
-     * @ORM\Column(type="simple_array")
-     */
-    private $matieres = [];
-
-    /**
      * @ORM\Column(type="string", length=30)
      */
     private $niveau;
@@ -112,6 +107,16 @@ class Professeur
      * @ORM\ManyToMany(targetEntity="App\Entity\Eleve", mappedBy="professeurs")
      */
     private $eleves;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $matiere1;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable = true)
+     */
+    private $matiere2;
 
     public function __construct()
     {
@@ -229,19 +234,7 @@ class Professeur
         $this->situationActuelle = $situationActuelle;
 
         return $this;
-    }
-
-    public function getMatieres(): ?array
-    {
-        return $this->matieres;
-    }
-
-    public function setMatieres(array $matieres): self
-    {
-        $this->matieres = $matieres;
-
-        return $this;
-    }
+    }    
 
     public function getNiveau(): ?string
     {
@@ -336,6 +329,28 @@ class Professeur
     {
         $this->commentaires = $commentaires;
 
+        return $this;
+    }
+
+    public function getMatiere1(): ?string
+    {
+        return $this->matiere1;
+    }
+
+    public function setMatiere1(?string $matiere1): self
+    {
+        $this->matiere1 = $matiere1;
+        return $this;
+    }
+
+    public function getMatiere2(): ?string
+    {
+        return $this->matiere2;
+    }
+
+    public function setMatiere2(?string $matiere2): self
+    {
+        $this->matiere2 = $matiere2;
         return $this;
     }
 
