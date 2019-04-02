@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Eleve{% endblock %}
+
+{% block contenu %}
+   	<div class="card" style="margin:15px;">
+	  <div class="card-header">
+	    <H1 style="text-align:center;">Ajouter eleve</H1>
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Informations générales</h5>
+      {{ form_start(form) }}
+     
+      {# Ici #}     
+
+          {{ form_widget(form) }}
+
+          <div class="container-fluid">
+          	<div class="row">
+          		<div class="col-md-11">
+          		</div>
+          		<div class="col-md-1">
+          			<button class="btn btn-dark" style="pull-right">Enregistrer</button>
+          		</div>
+          	</div>
+          </div>
+      {{ form_end(form) }}
+      <a href="{{ path('GestionSubventions') }}">Retour</a>
+	  </div>
+	</div>
+{% endblock %}
