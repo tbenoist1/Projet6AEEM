@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Ajouter Eleve{% endblock %}
+{% block title %}Ajouter Elève{% endblock %}
 
     {% block contenu %}
         <div class="card" style="margin:15px;">
          <div class="card-header">
-           <H1 style="text-align:center;">Ajouter eleve</H1>
+           <H1 style="text-align:center;">Ajouter élève</H1>
        </div>
        <div class="card-body">
           {{ form_start(form) }}
@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-1">
-                        {{ 'carré' }}
+                        {{ form_row(form.couleur) }}
                     </div>
                     <div class="col-md-9">
                     </div>

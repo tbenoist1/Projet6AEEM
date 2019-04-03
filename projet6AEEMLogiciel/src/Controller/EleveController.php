@@ -106,7 +106,7 @@ class EleveController extends AbstractController
        $formulaireEleve = $this->createForm(EleveType::class, $eleve);
 
         $formulaireEleve->handleRequest($request);
-         if ($formulaireeleve->isSubmitted() && $formulaireeleve->isValid())
+         if ($formulaireEleve->isSubmitted() && $formulaireEleve->isValid())
          {
             // Enregistrer la ressource en base de donnée
             $manager->persist($eleve);
@@ -124,7 +124,7 @@ class EleveController extends AbstractController
     //-------------------------------Modifier------------------------------//
 
     /**
-     * @Route("/modifiereEleve", name="ModifierEleve", methods={"GET"})
+     * @Route("/modifierEleve", name="ModifierEleve", methods={"GET"})
      */
     public function modifierEleve(eleveRepository $eleveRepository): Response
     {
