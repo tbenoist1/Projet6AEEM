@@ -42,24 +42,13 @@ class EleveType extends AbstractType
             ->add('contactNum')
             ->add('dateDebut' ,DateType::class ,['widget' => 'single_text'])
             ->add('dateFin' ,DateType::class ,['widget' => 'single_text'])
-            ->add('certificatMedical', ChoiceType::class, ['choices' => ['Certificat Médical' => 'Certificat Médical'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
-            ->add('ri', ChoiceType::class, ['choices' => ['RI' => 'RI'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
-            ->add('enveloppes', ChoiceType::class, ['choices' => ['Enveloppes' => 'Enveloppes'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
-            ->add('cheques', ChoiceType::class, ['choices' => ['Chèques' => 'Chèques'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
+            ->add('certificatMedical')
+            ->add('ri')
+            ->add('enveloppes')
+            ->add('cheques')
             ->add('professeurs')
             ->add('etablissement' ,EntityType::class, array('class' => Etablissement::class, 'choice_label' => 'nom', 'multiple' => false, 'expanded' => false))
+            ->add('couleur')
         ;
     }
 
