@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer Professeur{% endblock %}
+
+{% block contenu %}
+     
+    <div class="card" style="margin:15px;">
+        <div class="card-header">
+            <H1 style="text-align:center;">Supprimer professeur</H1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                 <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Matiere1</th>
+                        <th>Matiere2</th>
+                        <th>Niveau</th>
+                        <th>ZonesInterventions</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professeur in professeurs %}
+                        <tr>
+                            <td>{{ professeur.nom }}</td>
+                            <td>{{ professeur.prenom }}</td>
+                            <td>{{ professeur.matiere1 }}</td>
+                            <td>{{ professeur.matiere2 }}</td>
+                            <td>{{ professeur.niveau }}</td>
+                            <td>
+                                {% set nbElements = professeur.zonesInterventions|length %}
+                                {% for zoneCourante in 0..nbElements-1 %}
+
+                                    {{ professeur.zonesInterventions[zoneCourante] }}
+                                    {% if zoneCourante != nbElements-1 %}
+                                        {{ "/" }}
+                                    {% endif %}
+
+                                {% endfor %}
+                            </td>
+                            <td> 
+
+                            {{ include('professeur/SupprimerProfesseurId.html.twig') }}
+                            
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">Pas de valeurs trouvées</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('GestionProfesseurs') }}">Retour</a>
+        </div>
+    </div>            
+{% endblock %}

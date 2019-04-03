@@ -60,14 +60,14 @@ class MairieController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}", name="mairie_show", methods={"GET"})
+     * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
      */
     public function supprimerMairie(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/SupprimerMairie.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
+     {
+         return $this->render('mairie/SupprimerMairie.html.twig', [
+             'mairies' => $mairieRepository->findAll(),
+         ]);
+     }
 
     /**
      * @Route("/supprimerMairie/{id}", name="SupprimerMairieId", methods={"DELETE"})

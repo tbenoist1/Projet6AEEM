@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Eleve;
+use App\Entity\Etablissement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class EleveType extends AbstractType
 {
@@ -28,7 +30,7 @@ class EleveType extends AbstractType
             ->add('courriel')
             ->add('telephoneO')
             ->add('telephoneS')
-            ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
+            ->add('niveau', ChoiceType::class, ['choices' => ['&#9632;' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
                                                 'expanded' => false,
@@ -56,8 +58,8 @@ class EleveType extends AbstractType
                                                             'label' => ' ',
                                                             'expanded' => true,
                                                             'multiple' => true])
-            //->add('professeurs')
-            //->add('etablissement' ,EntityType::class, array('class' => Etablissement::class, 'choice_label' => 'nom', 'multiple' => false, 'expanded' => false))
+            ->add('professeurs')
+            ->add('etablissement' ,EntityType::class, array('class' => Etablissement::class, 'choice_label' => 'nom', 'multiple' => false, 'expanded' => false))
         ;
     }
 

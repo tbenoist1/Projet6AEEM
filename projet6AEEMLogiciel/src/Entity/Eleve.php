@@ -477,7 +477,6 @@ class Eleve
         return $this->getNom();
     }
 
-<<<<<<< HEAD
     public function getCouleur(): ?string
     {
         return $this->couleur;
@@ -489,6 +488,4 @@ class Eleve
 
         return $this;
     }   
-=======
->>>>>>> 1e66edeea8066a93928115773b881a064a6c439a
 }

@@ -60,14 +60,14 @@ class EleveController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}", name="SupprimerEleve", methods={"GET"})
+     * @Route("/supprimerEleve", name="SupprimerEleve", methods={"GET"})
      */
     public function supprimerEleve(EleveRepository $eleveRepository): Response
-    {
-        return $this->render('eleve/SupprimerEleve.html.twig', [
-            'eleves' => $eleveRepository->findAll(),
-        ]);
-    }
+     {
+         return $this->render('eleve/SupprimerEleve.html.twig', [
+             'eleves' => $eleveRepository->findAll(),
+         ]);
+     }
 
     /**
      * @Route("/supprimerEleve/{id}", name="SupprimerEleveId", methods={"DELETE"})
@@ -156,4 +156,3 @@ class EleveController extends AbstractController
     }
 
 }
-

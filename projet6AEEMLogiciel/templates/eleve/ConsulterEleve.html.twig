@@ -6,17 +6,17 @@
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
-            <H1>Consulter élève</H1>
             <H1 style="text-align:center;">Consulter élève</H1>
         </div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>nom</th>
-                        <th>prenom</th>
-                        <th>classe</th>
-                        <th></th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Niveau</th>
+                        <th>LieuIntervention</th>
+                        <th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,24 +24,20 @@
                     <tr>
                         <td>{{ eleve.nom }}</td>
                         <td>{{ eleve.prenom }}</td>
-                        <td>{{ eleve.classe }}</td>
-                        <td>
-                            <a href="{{ path('mairie_show', {'id': mairie.id}) }}">Consulter</a>
-                            <a href="{{ path('ConsulterMairieId', {'id': mairie.id}) }}">Consulter</a>                            
+                        <td>{{ eleve.niveau }}</td>
+                        <td>{{ eleve.lieuIntervention }}</td>
+                        <td> 
+                            <a href="{{ path('ConsulterEleveId', {'id': eleve.id}) }}">Consulter</a>                            
                         </td>
                     </tr>
                 {% else %}
                     <tr>
                         <td colspan="8">Pas de valeurs trouvées</td>
                     </tr>
-                {% endfor %}
+                 {% endfor %}
                 </tbody>
             </table>
-                    <a href="{{ path('GestionSubventions') }}">Retour</a>
-                {% endfor %}
-                </tbody>
-            </table>
-            <a href="{{ path('GestionSubventions') }}">Retour</a>
+            <a href="{{ path('GestionEleves') }}">Retour</a>
         </div>
     </div>            
 {% endblock %}
