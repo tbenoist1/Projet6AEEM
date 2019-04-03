@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MairieRepository")
@@ -18,31 +19,38 @@ class Mairie
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $ville;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern = "# [0-9]{5} #", message="Il semble y avoir un problème avec le code postal")
      */
     private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank    
      */
     private $zone;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Url
      */
     private $lienDossier;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Email
      */
     private $courriel;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $telephone;
 

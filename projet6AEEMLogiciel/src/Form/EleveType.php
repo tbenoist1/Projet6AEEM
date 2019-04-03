@@ -30,7 +30,7 @@ class EleveType extends AbstractType
             ->add('courriel')
             ->add('telephoneO')
             ->add('telephoneS')
-            ->add('niveau', ChoiceType::class, ['choices' => ['&#9632;' => 'Primaire',
+            ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
                                                 'expanded' => false,

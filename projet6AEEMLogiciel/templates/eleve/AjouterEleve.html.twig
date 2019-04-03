@@ -5,10 +5,10 @@
 
     {% block contenu %}
         <div class="card" style="margin:15px;">
-         <div class="card-header">
-           <H1 style="text-align:center;">Ajouter élève</H1>
-       </div>
-       <div class="card-body">
+           <div class="card-header">
+             <H1 style="text-align:center;">Ajouter élève</H1>
+         </div>
+         <div class="card-body">
           {{ form_start(form) }}
           <div class="row">
             <div class="col-md-12">
@@ -19,7 +19,7 @@
                     <div class="col-md-9">
                     </div>
                     <div class="col-md-2">
-                        {{ form_row(form.anneeSuivie) }}
+                        {{ form_row(form.anneeSuivie, {'label' : "Année"}) }}
                     </div>
                 </div><h5 class="card-title">Informations générales</h5>
 
@@ -28,13 +28,13 @@
                         {{ form_row(form.nom) }}
                     </div>
                     <div class="col-md-4">
-                        {{ form_row(form.prenom) }}
+                        {{ form_row(form.prenom, {'label' : "Prénom"}) }}
                     </div>
                     <div class="col-md-1">
                         {{ form_row(form.sexe) }}
                     </div>
                     <div class="col-md-3">
-                        {{ form_row(form.dateNaissance) }}
+                        {{ form_row(form.dateNaissance, {'label' : "Date de naissance"}) }}
                     </div>
                 </div>
                 <div class="row">
@@ -59,28 +59,15 @@
                     {{ form_row(form.courriel) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneO) }}
+                    {{ form_row(form.telephoneO, {'label' : "Téléphone Obligatoire"}) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneS) }}
+                    {{ form_row(form.telephoneS, {'label' : "Téléphone Optionnel"}) }}
                 </div>
                 <div class="col-md-2">
                 </div>
             </div>
             <div class="row">
-<<<<<<< HEAD
-            <div class="col-md-4">
-            {{ form_row(form.etablissement) }}
-            </div>
-            <div class="col-md-3">
-            {{ form_row(form.niveau) }}
-            </div>
-            <div class="col-md-3">
-            {{ form_row(form.classe) }}
-            </div>
-            <div class="col-md-2">
-            </div>
-=======
                 <div class="col-md-4">
                     {{ form_row(form.etablissement) }}
                 </div>
@@ -92,48 +79,47 @@
                 </div>
                 <div class="col-md-2">
                 </div>
->>>>>>> 48ceb4b8036da3e2a4f909d6d757bdb1839a9c39
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    {{ form_row(form.dureeIntervention) }}
+                    {{ form_row(form.dureeIntervention, {'label' : "Durée intervention"}) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.lieuIntervention) }}
+                    {{ form_row(form.lieuIntervention, {'label' : "Lieu intervention"}) }}
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(form.contact) }}
+                    {{ form_row(form.contact, {'label' : "Nom contact"}) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(form.contactNum) }}
+                    {{ form_row(form.contactNum, {'label' : "Téléphone contact"}) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    {{ form_row(form.dateDebut) }}
+                    {{ form_row(form.dateDebut, {'label' : "Date de début"}) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.dateFin) }}
+                    {{ form_row(form.dateFin, {'label' : "Date de fin"}) }}
                 </div>
                 <div class="col-md-6">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    {{ form_row(form.certificatMedical) }}
+                    {{ form_row(form.certificatMedical, {'label' : "Certificat Médical"}) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_row(form.ri) }}
+                    {{ form_row(form.ri, {'label' : "RI"}) }}
                 </div>
                 <div class="col-md-2">
                     {{ form_row(form.enveloppes) }}
                 </div>
                 <div class="col-md-2">
-                    {{ form_row(form.cheques) }}
+                    {{ form_row(form.cheques, {'label' : "Chèques"}) }}
                 </div>
                 <div class="col-md-4">
                 </div>
@@ -141,7 +127,16 @@
         </div>
     </div>
     {{ form_widget(form) }}
-    <button class="btn btn-dark" style="button-align:right;">Enregistrer</button>
+     <div class="container-fluid">
+             <div class="row">
+                <div class="col-md-11">
+                     <a href="{{ path('GestionEleves') }}">Retour</a>
+                </div>
+                <div class="col-md-1">
+                   <button class="btn btn-dark" style="pull-right">Enregistrer</button>
+               </div>
+           </div>
+        </div>
     {{ form_end(form) }}
 </div>
 </div>

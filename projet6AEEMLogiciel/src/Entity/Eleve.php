@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EleveRepository")
@@ -20,51 +21,62 @@ class Eleve
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank
      */
     private $sexe;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private $dateNaissance;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
      */
     private $anneeSuivie;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @@Assert\Regex(pattern = "# [0-9]{5} #", message="Il semble y avoir un problème avec le code postal")
      */
     private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $villeDomicile;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Email
      */
     private $courriel;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $telephoneO;
 
@@ -75,77 +87,92 @@ class Eleve
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $niveau;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $classe;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank
      */
     private $dureeIntervention;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $lieuIntervention;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $contact;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $contactNum;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private $dateDebut;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private $dateFin;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $certificatMedical;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $ri;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $enveloppes;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $cheques;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Professeur", inversedBy="eleves")
+     * @Assert\NotBlank(message = "Veuillez sélectionner un professeur")
      */
     private $professeurs;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Etablissement", inversedBy="eleves")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $etablissement;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
      */
     private $couleur;
 
