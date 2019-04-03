@@ -25,10 +25,6 @@ class ProfesseurType extends AbstractType
                                                                           'Retraité' => 'Retraité'],
                                                             'expanded' => true,
                                                             'multiple' => false])
-<<<<<<< HEAD
-            //->add('matieres')
-=======
->>>>>>> 48ceb4b8036da3e2a4f909d6d757bdb1839a9c39
             ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
