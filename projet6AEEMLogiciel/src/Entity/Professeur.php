@@ -114,7 +114,11 @@ class Professeur
     private $matiere1;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=50, nullable = true)
+=======
+     * @ORM\Column(type="string", length=50, nullable=true)
+>>>>>>> 48ceb4b8036da3e2a4f909d6d757bdb1839a9c39
      */
     private $matiere2;
 
@@ -234,7 +238,11 @@ class Professeur
         $this->situationActuelle = $situationActuelle;
 
         return $this;
+<<<<<<< HEAD
     }    
+=======
+    }
+>>>>>>> 48ceb4b8036da3e2a4f909d6d757bdb1839a9c39
 
     public function getNiveau(): ?string
     {
@@ -384,5 +392,29 @@ class Professeur
 
     public function __toString(){
         return $this->getNom();
+    }
+
+    public function getMatiere1(): ?string
+    {
+        return $this->matiere1;
+    }
+
+    public function setMatiere1(string $matiere1): self
+    {
+        $this->matiere1 = $matiere1;
+
+        return $this;
+    }
+
+    public function getMatiere2(): ?string
+    {
+        return $this->matiere2;
+    }
+
+    public function setMatiere2(?string $matiere2): self
+    {
+        $this->matiere2 = $matiere2;
+
+        return $this;
     }
 }

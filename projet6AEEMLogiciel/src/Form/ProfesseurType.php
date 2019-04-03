@@ -21,11 +21,14 @@ class ProfesseurType extends AbstractType
             ->add('courriel')
             ->add('telephoneO')
             ->add('telephoneS')
-            ->add('situationActuelle', ChoiceType::class, ['choices'  => ['Actif' => true,
-                                                                          'Retraité' => false],
+            ->add('situationActuelle', ChoiceType::class, ['choices'  => ['Actif' => 'Actif',
+                                                                          'Retraité' => 'Retraité'],
                                                             'expanded' => true,
                                                             'multiple' => false])
+<<<<<<< HEAD
             //->add('matieres')
+=======
+>>>>>>> 48ceb4b8036da3e2a4f909d6d757bdb1839a9c39
             ->add('niveau', ChoiceType::class, ['choices' => ['Primaire' => 'Primaire',
                                                               'Collège' => 'Collège',
                                                               'Lycée' => 'Lycée'],
@@ -49,15 +52,11 @@ class ProfesseurType extends AbstractType
                                                                 'Non' => false],
                                                             'expanded' => true,
                                                             'multiple' => false])
-            ->add('cv', ChoiceType::class, ['choices' => ['CV' => 'CV'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
-            ->add('cj', ChoiceType::class, ['choices' => ['CJ' => 'CJ'],
-                                                            'label' => ' ',
-                                                            'expanded' => true,
-                                                            'multiple' => true])
+            ->add('cv')
+            ->add('cj')
             ->add('commentaires')
+            ->add('matiere1')
+            ->add('matiere2')
             //->add('eleves')
         ;
     }

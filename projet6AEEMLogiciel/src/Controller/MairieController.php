@@ -26,16 +26,6 @@ class MairieController extends AbstractController
         return $this->render('mairie/GestionSubventions.html.twig');
     }
 
-    /**
-     * @Route("/liste", name="mairie_index", methods={"GET"})
-     */
-    public function index(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/index.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
-
 
 
 
@@ -70,14 +60,14 @@ class MairieController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}", name="mairie_show", methods={"GET"})
+     * @Route("/supprimerMairie", name="SupprimerMairie", methods={"GET"})
      */
     public function supprimerMairie(MairieRepository $mairieRepository): Response
-    {
-        return $this->render('mairie/SupprimerMairie.html.twig', [
-            'mairies' => $mairieRepository->findAll(),
-        ]);
-    }
+     {
+         return $this->render('mairie/SupprimerMairie.html.twig', [
+             'mairies' => $mairieRepository->findAll(),
+         ]);
+     }
 
     /**
      * @Route("/supprimerMairie/{id}", name="SupprimerMairieId", methods={"DELETE"})
@@ -125,7 +115,7 @@ class MairieController extends AbstractController
             return $this->redirectToRoute('gestionSubventions');
          }
         // Afficher la page présentant le formulaire d'ajout d'une mairie
-        return $this->render('mairie/ConsulterMairieId.html.twig', ['form' => $formulaireMairie->createView(), 'action'=>"modifier"]);
+        return $this->render('mairie/ConsulterMairieId.html.twig', ['form' => $formulaireMairie->createView()]);
     }
 
 

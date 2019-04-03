@@ -1,108 +1,116 @@
-    {% extends 'base.html.twig' %}
+        {% extends 'base.html.twig' %}
 
-    {% block title %}Ajout Professeurs{% endblock %}
+        {% block title %}Ajouter Professeur{% endblock %}
 
-        {% block contenu %}
+            {% block contenu %}
 
-        <div class="card" style="margin:15px;">
-            <div class="card-header">
-            <H1 style="text-align:center;">Ajouter professeurs</H1>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Informations générales</h5>
-                {{ form_start(form) }}
-                <div class="row">
-                    <div class="col-md-4">
-                        {{ form_row(form.nom) }}
+                <div class="card" style="margin:15px;">
+                    <div class="card-header">
+                        <H1 style="text-align:center;">Ajouter professeur</H1>
                     </div>
-                    <div class="col-md-4">
-                        {{ form_row(form.prenom) }}
+                    <div class="card-body">
+                        <h5 class="card-title">Informations générales</h5>
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ form_row(form.nom) }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ form_row(form.prenom) }}
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                              {{ form_row(form.adresse) }}
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                            {{ form_row(form.codePostal) }}
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(form.villeDomicile) }}
+                        </div>
+                        <div class="col-md-5">
+                        </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_row(form.courriel) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(form.telephoneO) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(form.telephoneS) }}
+                        </div>
+                        <div class="col-md-2">
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.situationActuelle) }}
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{ form_row(form.matiere1) }}
+                            {{ form_row(form.matiere2) }}
+                        </div>
+                        <div class="col-md-3">
+                            {{ form_row(form.niveau) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.zonesInterventions) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{ form_row(form.lieuxInterventions) }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form_row(form.toutesMaladies) }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form_row(form.voiture) }}
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            {{ form_row(form.cv) }}
+                        </div>
+                        <div class="col-md-2">
+                            {{ form_row(form.cj) }}
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_row(form.commentaires) }}
+                        </div>
+                    </div>
+                
+            <div class="container-fluid">
+             <div class="row">
+                <div class="col-md-11">
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                      {{ form_row(form.adresse) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        {{ form_row(form.codePostal) }}
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-3">
-                        {{ form_row(form.villeDomicile) }}
-                    </div>
-                    <div class="col-md-5">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        {{ form_row(form.courriel) }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ form_row(form.telephoneO) }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ form_row(form.telephoneS) }}
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form_row(form.situationActuelle) }}
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        {{ form_row(form.matieres) }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ form_row(form.niveau) }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ form_row(form.zonesInterventions) }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        {{ form_row(form.lieuxInterventions) }}
-                    </div>
-                    <div class="col-md-2">
-                        {{ form_row(form.toutesMaladies) }}
-                    </div>
-                    <div class="col-md-2">
-                        {{ form_row(form.voiture) }}
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        {{ form_row(form.cv) }}
-                    </div>
-                    <div class="col-md-2">
-                        {{ form_row(form.cj) }}
-                    </div>
-                    <div class="col-md-8">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ form_row(form.commentaires) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{ form_widget(form) }}
-        <button class="btn btn-dark">Enregistrer</button>
-        {{ form_end(form) }}
-    </div>
+                <div class="col-md-1">
+                   <button class="btn btn-dark" style="pull-right">Enregistrer</button>
+               </div>
+           </div>
+       </div>
+       {{ form_end(form) }}
+       <a href="{{ path('GestionProfesseurs') }}">Retour</a>
+   </div>
 </div>
-
+</div>
 {% endblock %}

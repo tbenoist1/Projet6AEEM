@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProfesseurController extends AbstractController
 {
+
+    //-------------------------------Accueil------------------------------// 
+    
     /**
      * @Route("/", name="GestionProfesseurs")
      */
@@ -23,15 +26,8 @@ class ProfesseurController extends AbstractController
         return $this->render('professeur/GestionProfesseurs.html.twig');
     }
 
-    /**
-     * @Route("/liste", name="professeur_index", methods={"GET"})
-     */
-    public function index(ProfesseurRepository $professeurRepository): Response
-    {
-        return $this->render('professeur/index.html.twig', [
-            'professeurs' => $professeurRepository->findAll(),
-        ]);
-    }
+
+
 
     //-------------------------------Ajouter------------------------------//
 
@@ -58,42 +54,25 @@ class ProfesseurController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="professeur_show", methods={"GET"})
-     */
-    public function show(Professeur $professeur): Response
-    {
-        return $this->render('professeur/show.html.twig', [
-            'professeur' => $professeur,
-        ]);
-    }
+
+
+
+    //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}/edit", name="professeur_edit", methods={"GET","POST"})
+     * @Route("/supprimerProfesseur", name="SupprimerProfesseur", methods={"GET"})
      */
-    public function edit(Request $request, Professeur $professeur): Response
-    {
-        $form = $this->createForm(ProfesseurType::class, $professeur);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('professeur_index', [
-                'id' => $professeur->getId(),
-            ]);
-        }
-
-        return $this->render('professeur/edit.html.twig', [
-            'professeur' => $professeur,
-            'form' => $form->createView(),
-        ]);
-    }
+    public function supprimerProfesseur(ProfesseurRepository $professeurRepository): Response
+     {
+         return $this->render('professeur/SupprimerProfesseur.html.twig', [
+             'professeurs' => $professeurRepository->findAll(),
+         ]);
+     }
 
     /**
-     * @Route("/{id}", name="professeur_delete", methods={"DELETE"})
+     * @Route("/supprimerProfesseur/{id}", name="SupprimerProfesseurId", methods={"DELETE"})
      */
-    public function delete(Request $request, Professeur $professeur): Response
+    public function supprimerProfesseurId(Request $request, Professeur $professeur): Response
     {
         if ($this->isCsrfTokenValid('delete'.$professeur->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -101,6 +80,79 @@ class ProfesseurController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('professeur_index');
+        return $this->redirectToRoute('SupprimerProfesseur');
     }
+
+
+
+
+    //-------------------------------Consuter------------------------------//
+
+    /**
+     * @Route("/consulterProfesseur", name="ConsulterProfesseur", methods={"GET"})
+     */
+    public function consulterProfesseur(ProfesseurRepository $professeurRepository): Response
+     {
+         return $this->render('professeur/ConsulterProfesseur.html.twig', [
+             'professeurs' => $professeurRepository->findAll(),
+         ]);
+     }
+
+    /**
+     * @Route("/consulterProfesseur/{id}", name="ConsulterProfesseurId", methods={"GET"})
+     */
+    public function consulterProfesseurId(Professeur $professeur, Request $request): Response
+    {
+       $formulaireprofesseur = $this->createForm(ProfesseurType::class, $professeur);
+
+        $formulaireprofesseur->handleRequest($request);
+         if ($formulaireprofesseur->isSubmitted() && $formulaireprofesseur->isValid())
+         {
+            // Enregistrer la ressource en base de donnée
+            $manager->persist($professeur);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('GestionProfesseurs');
+         }
+        // Afficher la page présentant le formulaire d'ajout d'une professeur
+        return $this->render('professeur/ConsulterProfesseurId.html.twig', ['form' => $formulaireprofesseur->createView()]);
+    }
+
+
+
+
+    //-------------------------------Modifier------------------------------//
+
+    /**
+     * @Route("/modifierProfesseur", name="ModifierProfesseur", methods={"GET"})
+     */
+    public function modifierProfesseur(ProfesseurRepository $professeurRepository): Response
+    {
+        return $this->render('professeur/ModifierProfesseur.html.twig', [
+            'professeurs' => $professeurRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/modifierProfesseur/{id}", name="ModifierProfesseurId", methods={"GET","POST"})
+     */
+    public function modifierProfesseurId(Request $request, Professeur $professeur): Response
+    {
+        $form = $this->createForm(ProfesseurType::class, $professeur);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ModifierProfesseur', [
+                'id' => $professeur->getId(),
+            ]);
+        }
+
+        return $this->render('professeur/ModifierProfesseurId.html.twig', [
+            'professeur' => $professeur,
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

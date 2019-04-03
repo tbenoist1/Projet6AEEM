@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Supprimer Eleve{% endblock %}
+{% block title %}Consulter Eleve{% endblock %}
 
 {% block contenu %}
      
     <div class="card" style="margin:15px;">
         <div class="card-header">
-            <H1 style="text-align:center;">Supprimer éleve</H1>
+            <H1>Consulter élève</H1>
+            <H1 style="text-align:center;">Consulter élève</H1>
         </div>
         <div class="card-body">
             <table class="table">
@@ -27,16 +28,14 @@
                         <td>{{ eleve.niveau }}</td>
                         <td>{{ eleve.lieuIntervention }}</td>
                         <td> 
-
-                            {{ include('eleve/SupprimerEleveId.html.twig') }}
-                            
+                            <a href="{{ path('ConsulterEleveId', {'id': eleve.id}) }}">Consulter</a>                            
                         </td>
                     </tr>
                 {% else %}
                     <tr>
                         <td colspan="8">Pas de valeurs trouvées</td>
                     </tr>
-                {% endfor %}
+                 {% endfor %}
                 </tbody>
             </table>
             <a href="{{ path('GestionEleves') }}">Retour</a>

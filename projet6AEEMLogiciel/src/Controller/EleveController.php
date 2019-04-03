@@ -26,16 +26,8 @@ class EleveController extends AbstractController
         return $this->render('eleve/GestionEleves.html.twig');
     }
 
-    /**
-     * @Route("/liste", name="eleve_index", methods={"GET"})
-     */
-    public function index(EleveRepository $eleveRepository): Response
-    {
-        return $this->render('eleve/index.html.twig', [
-            'eleves' => $eleveRepository->findAll(),
-        ]);
-    }
-    
+
+
 
     //-------------------------------Ajouter------------------------------//
 
@@ -62,19 +54,20 @@ class EleveController extends AbstractController
         ]);
     }
 
-    
+
+
 
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}", name="SupprimerEleve", methods={"GET"})
+     * @Route("/supprimerEleve", name="SupprimerEleve", methods={"GET"})
      */
     public function supprimerEleve(EleveRepository $eleveRepository): Response
-    {
-        return $this->render('eleve/SupprimerEleve.html.twig', [
-            'eleve' => $eleveRepository->findAll(),
-        ]);
-    }
+     {
+         return $this->render('eleve/SupprimerEleve.html.twig', [
+             'eleves' => $eleveRepository->findAll(),
+         ]);
+     }
 
     /**
      * @Route("/supprimerEleve/{id}", name="SupprimerEleveId", methods={"DELETE"})
@@ -90,7 +83,8 @@ class EleveController extends AbstractController
         return $this->redirectToRoute('SupprimerEleve');
     }
 
-    
+
+
 
     //-------------------------------Consuter------------------------------//
 
@@ -112,26 +106,27 @@ class EleveController extends AbstractController
        $formulaireEleve = $this->createForm(EleveType::class, $eleve);
 
         $formulaireEleve->handleRequest($request);
-         if ($formulaireEleve->isSubmitted() && $formulaireEleve->isValid())
+         if ($formulaireeleve->isSubmitted() && $formulaireeleve->isValid())
          {
             // Enregistrer la ressource en base de donnée
             $manager->persist($eleve);
             $manager->flush();
             // Rediriger l'utilisateur vers la page d'accueil
-            return $this->redirectToRoute('gestionEleves');
+            return $this->redirectToRoute('GestionEleves');
          }
-        // Afficher la page présentant le formulaire d'ajout d'un eleve
-        return $this->render('eleve/ConsulterEleveId.html.twig', ['form' => $formulaireEleve->createView(), 'action'=>"modifier"]);
+        // Afficher la page présentant le formulaire d'ajout d'une eleve
+        return $this->render('eleve/ConsulterEleveId.html.twig', ['form' => $formulaireEleve->createView()]);
     }
 
-    
+
+
 
     //-------------------------------Modifier------------------------------//
 
     /**
-     * @Route("/modifierEleve", name="ModifierEleve", methods={"GET"})
+     * @Route("/modifiereEleve", name="ModifierEleve", methods={"GET"})
      */
-    public function modifierEleve(EleveRepository $eleveRepository): Response
+    public function modifierEleve(eleveRepository $eleveRepository): Response
     {
         return $this->render('eleve/ModifierEleve.html.twig', [
             'eleves' => $eleveRepository->findAll(),
@@ -159,4 +154,5 @@ class EleveController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 }

@@ -144,6 +144,11 @@ class Eleve
      */
     private $etablissement;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $couleur;
+
     public function __construct()
     {
         $this->professeurs = new ArrayCollection();
@@ -472,4 +477,15 @@ class Eleve
         return $this->getNom();
     }
 
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): self
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }   
 }
