@@ -16,7 +16,7 @@
                         {{ form_row(form.nom, {'attr' : {'readonly' : true}} ) }}
                     </div>
                     <div class="col-md-4">
-                        {{ form_row(form.prenom, {'attr' : {'readonly' : true}} ) }}
+                        {{ form_row(form.prenom, {'label' : "Prénom", 'attr' : {'readonly' : true}} ) }}
                     </div>
                     <div class="col-md-4">
                     </div>
@@ -28,7 +28,7 @@
               </div>
               <div class="row">
                 <div class="col-md-2">
-                    {{ form_row(form.codePostal, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.codePostal, {'label' : "Code Postal", 'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -43,10 +43,10 @@
                     {{ form_row(form.courriel, {'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneO, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.telephoneO, {'label' : "Téléphone Obligatoire", 'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneS, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.telephoneS, {'label' : "Téléphone Optionnel", 'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -60,19 +60,19 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    {{ form_row(form.matiere1, {'attr' : {'readonly' : true}} ) }}
-                    {{ form_row(form.matiere2, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.matiere1, {'label' : "Matière(s)", 'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.matiere2, {'label' : " ", 'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-3">
                     {{ form_row(form.niveau, {'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(form.zonesInterventions, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.zonesInterventions, {'label' : "Zone(s) d'intervention", 'attr' : {'readonly' : true}} ) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    {{ form_row(form.lieuxInterventions, {'attr' : {'readonly' : true}} ) }}
+                    {{ form_row(form.lieuxInterventions, {'label' : "Lieu(x) d'intervention", 'attr' : {'readonly' : true}} ) }}
                 </div>
                 <div class="col-md-2">
                     {{ form_row(form.toutesMaladies, {'attr' : {'readonly' : true}} ) }}

@@ -15,7 +15,7 @@
                         {{ form_row(form.nom) }}
                     </div>
                     <div class="col-md-4">
-                        {{ form_row(form.prenom) }}
+                        {{ form_row(form.prenom, {'label' : "Prénom"}) }}
                     </div>
                     <div class="col-md-4">
                     </div>
@@ -27,7 +27,7 @@
               </div>
               <div class="row">
                 <div class="col-md-2">
-                    {{ form_row(form.codePostal) }}
+                    {{ form_row(form.codePostal, {'label' : "Code Postal"}) }}
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -42,10 +42,10 @@
                     {{ form_row(form.courriel) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneO) }}
+                    {{ form_row(form.telephoneO, {'label' : "Téléphone Obligatoire"}) }}
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.telephoneS) }}
+                    {{ form_row(form.telephoneS, {'label' : "Téléphone Optionnel"}) }}
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -59,19 +59,19 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    {{ form_row(form.matiere1) }}
-                    {{ form_row(form.matiere2) }}
+                    {{ form_row(form.matiere1, {'label' : "Matière(s)"}) }}
+                    {{ form_row(form.matiere2, {'label' : " "}) }}
                 </div>
                 <div class="col-md-3">
                     {{ form_row(form.niveau) }}
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(form.zonesInterventions) }}
+                    {{ form_row(form.zonesInterventions, {'label' : "Zone(s) d'intervention"}) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    {{ form_row(form.lieuxInterventions) }}
+                    {{ form_row(form.lieuxInterventions, {'label' : "Lieu(x) d'intervention"}) }}
                 </div>
                 <div class="col-md-2">
                     {{ form_row(form.toutesMaladies) }}

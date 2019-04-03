@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProfesseurRepository")
@@ -20,36 +21,44 @@ class Professeur
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank     
+     * @Assert\Regex(pattern = "# [0-9]{5} #", message="Il semble y avoir un problème avec le code postal")
      */
     private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $villeDomicile;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Email
      */
     private $courriel;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $telephoneO;
 
@@ -60,46 +69,55 @@ class Professeur
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank
      */
     private $situationActuelle;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank
      */
     private $niveau;
 
     /**
      * @ORM\Column(type="simple_array")
+     * @Assert\NotBlank
      */
     private $zonesInterventions = [];
 
     /**
      * @ORM\Column(type="simple_array")
+     * @Assert\NotBlank
      */
     private $lieuxInterventions = [];
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $toutesMaladies;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $voiture;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $cv;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
      */
     private $cj;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank
      */
     private $commentaires;
 
@@ -110,6 +128,7 @@ class Professeur
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $matiere1;
 
@@ -332,6 +351,28 @@ class Professeur
         return $this;
     }
 
+    public function getMatiere1(): ?string
+    {
+        return $this->matiere1;
+    }
+
+    public function setMatiere1(?string $matiere1): self
+    {
+        $this->matiere1 = $matiere1;
+        return $this;
+    }
+
+    public function getMatiere2(): ?string
+    {
+        return $this->matiere2;
+    }
+
+    public function setMatiere2(?string $matiere2): self
+    {
+        $this->matiere2 = $matiere2;
+        return $this;
+    }
+
     /**
      * @return Collection|Eleve[]
      */
@@ -362,29 +403,5 @@ class Professeur
 
     public function __toString(){
         return $this->getNom();
-    }
-
-    public function getMatiere1(): ?string
-    {
-        return $this->matiere1;
-    }
-
-    public function setMatiere1(string $matiere1): self
-    {
-        $this->matiere1 = $matiere1;
-
-        return $this;
-    }
-
-    public function getMatiere2(): ?string
-    {
-        return $this->matiere2;
-    }
-
-    public function setMatiere2(?string $matiere2): self
-    {
-        $this->matiere2 = $matiere2;
-
-        return $this;
     }
 }

@@ -9,7 +9,7 @@
        </div>
        <div class="card-body">
          <h5 class="card-title">Informations générales</h5>
-         {{ form_start(form) }}
+         {{ form_start(form, {'attr' : {'novalidate':'novalidate'}}) }}
          <div class="row">
           <div class="col-md-12">
            <div class="row">
@@ -17,7 +17,7 @@
               {{ form_row(form.ville) }}
             </div>
             <div class="col-md-3">
-              {{ form_row(form.codePostal) }}
+              {{ form_row(form.codePostal, {'label' : "Code Postal"}) }}
             </div>
             <div class="col-md-3">
               {{ form_row(form.zone) }}
@@ -39,7 +39,7 @@
              {{ form_row(form.courriel) }}
            </div>
            <div class="col-md-3">
-             {{ form_row(form.telephone) }}
+             {{ form_row(form.telephone, {'label' : "Téléphone"}) }}
            </div>
            <div class="col-md-3">
            </div>

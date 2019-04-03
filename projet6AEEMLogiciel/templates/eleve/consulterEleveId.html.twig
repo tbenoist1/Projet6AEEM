@@ -19,7 +19,7 @@
                             <div class="col-md-9">
                             </div>
                             <div class="col-md-2">
-                                {{ form_row(form.anneeSuivie, {'attr' : {'readonly' : true}} ) }}
+                                {{ form_row(form.anneeSuivie, {'label' : "Année", 'attr' : {'readonly' : true}} ) }}
                             </div>
                         </div>
                         <h5 class="card-title">Informations générales</h5>
@@ -28,13 +28,13 @@
                                 {{ form_row(form.nom, {'attr' : {'readonly' : true}} ) }}
                             </div>
                             <div class="col-md-4">
-                                {{ form_row(form.prenom, {'attr' : {'readonly' : true}} ) }}
+                                {{ form_row(form.prenom, {'label' : "Prénom", 'attr' : {'readonly' : true}} ) }}
                             </div>
                             <div class="col-md-1">
                                 {{ form_row(form.sexe, {'attr' : {'readonly' : true}} ) }}
                             </div>
                             <div class="col-md-3">
-                                {{ form_row(form.dateNaissance, {'attr' : {'readonly' : true}} ) }}
+                                {{ form_row(form.dateNaissance, {'label' : "Date de naissance", 'attr' : {'readonly' : true}} ) }}
                             </div>
                         </div>
                         <div class="row">
@@ -59,10 +59,10 @@
                             {{ form_row(form.courriel, {'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.telephoneO, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.telephoneO, {'label' : "Téléphone Obligatoire", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.telephoneS, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.telephoneS, {'label' : "Téléphone Optionnel", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
                         </div>
@@ -82,44 +82,44 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            {{ form_row(form.dureeIntervention, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.dureeIntervention, {'label' : "Durée intervention", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.lieuIntervention, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.lieuIntervention, {'label' : "Lieu intervention", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-6">
-                            {{ form_row(form.contact, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.contact, {'label' : "Nom contact", 'attr' : {'readonly' : true}} ) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                         </div>
                         <div class="col-md-6">
-                            {{ form_row(form.contactNum, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.contactNum, {'label' : "Téléphone contact", 'attr' : {'readonly' : true}} ) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            {{ form_row(form.dateDebut, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.dateDebut, {'label' : "Date de début", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.dateFin, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.dateFin, {'label' : "Date de fin", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-6">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-2">
-                            {{ form_row(form.certificatMedical, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.certificatMedical, {'label' : "Certificat Médical", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
-                            {{ form_row(form.ri, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.ri, {'label' : "RI", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
                             {{ form_row(form.enveloppes, {'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
-                            {{ form_row(form.cheques, {'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.cheques, {'label' : "Chèques", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-4">
                         </div>
@@ -128,7 +128,7 @@
             </div>
             {{ form_widget(form) }}
             {{ form_end(form) }}
-            <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a>
+            <a href="{{ path('ConsulterEleve') }}">Retour à la liste</a>
         </div>
     </div>
 
