@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EtablissementController extends AbstractController
 {
+
+    //-------------------------------Accueil------------------------------// 
+    
     /**
      * @Route("/", name="GestionEtablissements")
      */
@@ -23,15 +26,8 @@ class EtablissementController extends AbstractController
         return $this->render('etablissement/GestionEtablissements.html.twig');
     }
 
-    /**
-     * @Route("/liste", name="etablissement_index", methods={"GET"})
-     */
-    public function index(EtablissementRepository $etablissementRepository): Response
-    {
-        return $this->render('etablissement/index.html.twig', [
-            'etablissements' => $etablissementRepository->findAll(),
-        ]);
-    }
+
+
 
     //-------------------------------Ajouter------------------------------//
 
@@ -58,42 +54,25 @@ class EtablissementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="etablissement_show", methods={"GET"})
-     */
-    public function show(Etablissement $etablissement): Response
-    {
-        return $this->render('etablissement/show.html.twig', [
-            'etablissement' => $etablissement,
-        ]);
-    }
+
+
+
+    //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/{id}/edit", name="etablissement_edit", methods={"GET","POST"})
+     * @Route("/supprimerEtablissement", name="SupprimerEtablissement", methods={"GET"})
      */
-    public function edit(Request $request, Etablissement $etablissement): Response
-    {
-        $form = $this->createForm(EtablissementType::class, $etablissement);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('etablissement_index', [
-                'id' => $etablissement->getId(),
-            ]);
-        }
-
-        return $this->render('etablissement/edit.html.twig', [
-            'etablissement' => $etablissement,
-            'form' => $form->createView(),
-        ]);
-    }
+    public function supprimerEtablissement(EtablissementRepository $etablissementRepository): Response
+     {
+         return $this->render('etablissement/SupprimerEtablissement.html.twig', [
+             'etablissements' => $etablissementRepository->findAll(),
+         ]);
+     }
 
     /**
-     * @Route("/{id}", name="etablissement_delete", methods={"DELETE"})
+     * @Route("/supprimerEtablissement/{id}", name="SupprimerEtablissementId", methods={"DELETE"})
      */
-    public function delete(Request $request, Etablissement $etablissement): Response
+    public function supprimerEtablissementId(Request $request, Etablissement $etablissement): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etablissement->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -101,6 +80,79 @@ class EtablissementController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('etablissement_index');
+        return $this->redirectToRoute('SupprimerEtablissement');
     }
+
+
+
+
+    //-------------------------------Consuter------------------------------//
+
+    /**
+     * @Route("/consulterEtablissement", name="ConsulterEtablissement", methods={"GET"})
+     */
+    public function consulterEtablissement(EtablissementRepository $etablissementRepository): Response
+     {
+         return $this->render('etablissement/ConsulterEtablissement.html.twig', [
+             'etablissements' => $etablissementRepository->findAll(),
+         ]);
+     }
+
+    /**
+     * @Route("/consulterEtablissement/{id}", name="ConsulterEtablissementId", methods={"GET"})
+     */
+    public function consulterEtablissementId(Etablissement $etablissement, Request $request): Response
+    {
+       $formulaireEtablissement = $this->createForm(EtablissementType::class, $etablissement);
+
+        $formulaireEtablissement->handleRequest($request);
+         if ($formulaireEtablissement->isSubmitted() && $formulaireetablissement->isValid())
+         {
+        
+            $manager->persist($etablissement);
+            $manager->flush();
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('GestionEtablissements');
+         }
+        // Afficher la page présentant le formulaire d'ajout d'une etablissement
+        return $this->render('etablissement/ConsulterEtablissementId.html.twig', ['form' => $formulaireEtablissement->createView()]);
+    }
+
+
+
+
+    //-------------------------------Modifier------------------------------//
+
+    /**
+     * @Route("/modifierEtablissement", name="ModifierEtablissement", methods={"GET"})
+     */
+    public function modifierEtablissement(EtablissementRepository $etablissementRepository): Response
+    {
+        return $this->render('etablissement/ModifierEtablissement.html.twig', [
+            'etablissements' => $etablissementRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/modifierEtablissement/{id}", name="ModifierEtablissementId", methods={"GET","POST"})
+     */
+    public function modifierEtablissementId(Request $request, Etablissement $etablissement): Response
+    {
+        $form = $this->createForm(EtablissementType::class, $etablissement);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ModifierEtablissement', [
+                'id' => $etablissement->getId(),
+            ]);
+        }
+
+        return $this->render('etablissement/ModifierEtablissementId.html.twig', [
+            'etablissement' => $etablissement,
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

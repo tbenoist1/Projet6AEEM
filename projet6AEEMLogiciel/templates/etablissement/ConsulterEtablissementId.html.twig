@@ -1,132 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eleves{% endblock %}
+{% block title %}Fiche Etablissement{% endblock %}
 
     {% block contenu %}
 
         <div class="card" style="margin:15px;">
             <div class="card-header">
-                <H1 style="text-align:center;">Consulter élève</H1>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Informations générales</h5>
-                {{ form_start(form) }}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-10">
-                            </div>
-                            <div class="col-md-2">
-                                {{ form_row(form.anneeSuivie, {'attr' : {'readonly' : true}} ) }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                {{ form_row(form.nom, {'attr' : {'readonly' : true}} ) }}
-                            </div>
-                            <div class="col-md-4">
-                                {{ form_row(form.prenom, {'attr' : {'readonly' : true}} ) }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ form_row(form.sexe, {'attr' : {'readonly' : true}} ) }}
-                            </div>
-                            <div class="col-md-3">
-                                {{ form_row(form.dateNaissance, {'attr' : {'readonly' : true}} ) }}
-                            </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                              {{ form_row(form.adresse, {'attr' : {'readonly' : true}} ) }}
-                          </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-2">
-                            {{ form_row(form.codePostal, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.villeDomicile, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-5">
-                        </div>
-                    </div>
+                <H1 style="text-align:center;">Fiche établissement</H1>
+          </div>
+          <div class="card-body">
+              <h5 class="card-title">Informations générales</h5>
+              {{ form_start(form) }}
+              <div class="row">
+                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4">
-                            {{ form_row(form.courriel, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.telephoneO, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.telephoneS, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            {{ form_row(form.etablissement, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.niveau, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.classe, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            {{ form_row(form.dureeIntervention, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.lieuIntervention, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ form_row(form.contact, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
-                            {{ form_row(form.contactNum, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            {{ form_row(form.dateDebut, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-3">
-                            {{ form_row(form.dateFin, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-6">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            {{ form_row(form.certificatMedical, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                            {{ form_row(form.ri, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                            {{ form_row(form.enveloppes, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-2">
-                            {{ form_row(form.cheques, {'attr' : {'readonly' : true}} ) }}
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
-            <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a>
-        </div>
-    </div>
+                       <div class="col-md-12">
+                         {{ form_row(form.nom, {'attr' : {'readonly' : true}} ) }}
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-12">
+                 <div class="row">
+                   <div class="col-md-2">
+                     {{ form_row(form.type, {'attr' : {'readonly' : true}} ) }}
+                 </div>
+                 <div class="col-md-10">
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-12">
+             <div class="row">
+                <div class="col-md-6">
+                  {{ form_row(form.adresse, {'attr' : {'readonly' : true}} ) }}
+              </div>
+              <div class="col-md-3">
+                  {{ form_row(form.codePostal, {'attr' : {'readonly' : true}} ) }}
+              </div>
+              <div class="col-md-3">
+               {{ form_row(form.ville, {'attr' : {'readonly' : true}} ) }}
+           </div>
+       </div>
+       <div class="row">
+        <div class="col-md-6">
+          {{ form_row(form.courriel, {'attr' : {'readonly' : true}} ) }}
+      </div>
+      <div class="col-md-3">
+          {{ form_row(form.telephone, {'attr' : {'readonly' : true}} ) }}
+      </div>
+      <div class="col-md-3">
+      </div>
+  </div>
+</div>
+</div>
+{{ form_widget(form) }}
+{{ form_end(form) }}
+<a href="{{ path('ConsulterEtablissement') }}">Retour à la liste</a>
+</div>
+</div>
 
 {% endblock %}

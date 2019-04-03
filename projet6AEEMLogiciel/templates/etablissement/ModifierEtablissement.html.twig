@@ -1,44 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier Eleve{% endblock %}
+{% block title %}Modifier Etablissement{% endblock %}
 
-{% block contenu %}
-     
-    <div class="card" style="margin:15px;">
-        <div class="card-header">
-            <H1 style="text-align:center;">Modifier éleve</H1>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Niveau</th>
-                        <th>LieuIntervention</th>
-                        <th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for eleve in eleves %}
-                    <tr>
-                        <td>{{ eleve.nom }}</td>
-                        <td>{{ eleve.prenom }}</td>
-                        <td>{{ eleve.niveau }}</td>
-                        <td>{{ eleve.lieuIntervention }}</td>
-                        <td>       
-                            <a href="{{ path('ModifierEleveId', {'id': eleve.id}) }}">Modifier</a>
-                            
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">Pas de valeurs trouvées</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            <a href="{{ path('GestionEleves') }}">Retour</a>
-        </div>
-    </div>            
-{% endblock %}
+    {% block contenu %}
+       
+        <div class="card" style="margin:15px;">
+            <div class="card-header">
+                <H1 style="text-align:center;">Modifier établissement</H1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Ville</th>
+                            <th>Courriel</th>
+                            <th>Telephone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for etablissement in etablissements %}
+                            <tr>
+                                <td>{{ etablissement.nom }}</td>
+                                <td>{{ etablissement.type }}</td>
+                                <td>{{ etablissement.ville }}</td>
+                                <td>{{ etablissement.courriel }}</td>
+                                <td> 
+                                    <a href="{{ path('ModifierEtablissementId', {'id': etablissement.id}) }}">Modifier</a>
+                                    
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">Pas de valeurs trouvées</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('GestionEtablissements') }}">Retour</a>
+            </div>
+        </div>            
+    {% endblock %}

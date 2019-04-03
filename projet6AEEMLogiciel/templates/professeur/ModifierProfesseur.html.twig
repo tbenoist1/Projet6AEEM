@@ -14,8 +14,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Prenom</th>
-                            <th>Matiere1</th>
-                            <th>Matiere2</th>
+                            <th>Matiere(s)</th>
                             <th>Niveau</th>
                             <th>ZonesInterventions</th>
                             <th></th>
@@ -26,8 +25,14 @@
                             <tr>
                                 <td>{{ professeur.nom }}</td>
                                 <td>{{ professeur.prenom }}</td>
-                                <td>{{ professeur.matiere1 }}</td>
-                                <td>{{ professeur.matiere2 }}</td>
+                                <td>{{ professeur.matiere1 }}
+                                    
+                                    {% if professeur.matiere2 != null %}
+                                        {{ '/' }}
+                                        {{ professeur.matiere2 }}
+                                    {% endif %}
+
+                                </td>
                                 <td>{{ professeur.niveau }}</td>
                                 <td>
                                     {% set nbElements = professeur.zonesInterventions|length %}

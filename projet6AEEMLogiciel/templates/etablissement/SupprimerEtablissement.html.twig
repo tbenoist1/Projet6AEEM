@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Supprimer Eleve{% endblock %}
+{% block title %}Supprimer Etablissement{% endblock %}
 
 {% block contenu %}
      
-    <div class="card" style="margin:15px;">
-        <div class="card-header">
-            <H1 style="text-align:center;">Supprimer eleve</H1>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Niveau</th>
-                        <th>LieuIntervention</th>
-                        <th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for eleve in eleves %}
-                    <tr>
-                        <td>{{ eleve.nom }}</td>
-                        <td>{{ eleve.prenom }}</td>
-                        <td>{{ eleve.niveau }}</td>
-                        <td>{{ eleve.lieuIntervention }}</td>
-                        <td> 
+     <div class="card" style="margin:15px;">
+            <div class="card-header">
+                <H1 style="text-align:center;">Supprimer établissement</H1>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Ville</th>
+                            <th>Courriel</th>
+                            <th>Telephone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for etablissement in etablissements %}
+                            <tr>
+                                <td>{{ etablissement.nom }}</td>
+                                <td>{{ etablissement.type }}</td>
+                                <td>{{ etablissement.ville }}</td>
+                                <td>{{ etablissement.courriel }}</td>
+                                <td> 
 
-                            {{ include('eleve/SupprimerEleveId.html.twig') }}
+                            {{ include('etablissement/SupprimerEtablissementId.html.twig') }}
                             
                         </td>
                     </tr>
@@ -39,7 +39,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <a href="{{ path('GestionEleves') }}">Retour</a>
+            <a href="{{ path('GestionEtablissements') }}">Retour</a>
         </div>
     </div>            
 {% endblock %}
