@@ -3,29 +3,18 @@
 {% block contenu %}
 	<h1 style="text-align:center; margin-top:50px">Gestion des subventions<h1>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-			<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('AjouterMairie') }}" role="button" style="line-height:50px; margin-top:100px;">Ajouter mairie</a>
-			<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('SupprimerMairie') }}" role="button" style="line-height:50px; margin-top:15px">Supprimer mairie</a> 
-			<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('ModifierMairie') }}" role="button" style="line-height:50px; margin-top:15px">Modifier mairie</a> 
-			<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('ConsulterMairie') }}" role="button" style="line-height:50px; margin-top:15px">Consulter mairie</a><BR> 
-			<a href="{{ path('Accueil') }}"><h5>Retour</h5></a>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('AjouterMairie') }}" role="button" style="line-height:50px; margin-top:100px;">Ajouter mairie</a>
+				<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('SupprimerMairie') }}" role="button" style="line-height:50px; margin-top:15px">Supprimer mairie</a> 
+				<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('ModifierMairie') }}" role="button" style="line-height:50px; margin-top:15px">Modifier mairie</a> 
+				<a class="btn btn-outline-primary btn-lg btn-block" href="{{ path('ConsulterMairie') }}" role="button" style="line-height:50px; margin-top:15px">Consulter mairie</a><BR> 
+				<a href="{{ path('Accueil') }}"><h5>Retour</h5></a>
+			</div>
+			<div class="col-md-4">
+			</div>
 		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
-</div>	
-
-<font size="+5">
-<select id="liste" style="color:white; size:10;" onchange="couleurCarre()">
-
-<option value="blue" style="color:blue;" selected="selected"> <FONT size="10">&#9632;</FONT></option>
-<option value="green" style="color:green;" id="0">&#9632;</option>
-<option value="red" style="color:red;">&#9632;</option>
-
-</select>
-</font>
-
+	</div>	
 {% endblock %}

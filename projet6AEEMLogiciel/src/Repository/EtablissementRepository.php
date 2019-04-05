@@ -19,6 +19,28 @@ class EtablissementRepository extends ServiceEntityRepository
         parent::__construct($registry, Etablissement::class);
     }
 
+    public function findByType($type)
+    {
+        return $this->createQueryBuilder('e')
+            ->Where('e.type = :type')
+            ->setParameter('type', $type)
+            ->orderBy('e.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByVille($ville)
+    {
+        return $this->createQueryBuilder('e')
+            ->Where('e.ville = :ville')
+            ->setParameter('ville', $ville)
+            ->orderBy('e.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Etablissement[] Returns an array of Etablissement objects
     //  */

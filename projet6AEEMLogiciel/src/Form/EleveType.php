@@ -48,7 +48,11 @@ class EleveType extends AbstractType
             ->add('cheques')
             ->add('professeurs')
             ->add('etablissement' ,EntityType::class, array('class' => Etablissement::class, 'choice_label' => 'nom', 'multiple' => false, 'expanded' => false))
-            ->add('couleur')
+            ->add('couleur',ChoiceType::class, ['choices' => ['Bleu' => 'Bleu',
+                                                              'Rouge' => 'Rouge',
+                                                              'Vert' => 'Vert'],
+                                                'expanded' => false,
+                                                'multiple' => false])
         ;
     }
 

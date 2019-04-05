@@ -7,6 +7,18 @@
     <div class="card" style="margin:15px;">
         <div class="card-header">
             <H1 style="text-align:center;">Supprimer mairie</H1>
+            <h6>Trier par :</h6>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Zone
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{ path('ConsulterMairie', { zone:'BAB'}) }}">BAB</a>
+                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Pays Basque Intérieur"}) }}">Pays Basque Intérieur</a>
+                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Sud Pays Basque"}) }}">Sud Pays Basque</a>
+                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Sud Landes"}) }}">Sud Landes</a>
+              </div>
+            </div>+
         </div>
         <div class="card-body">
             <table class="table">

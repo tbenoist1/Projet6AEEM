@@ -60,13 +60,26 @@ class EtablissementController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/supprimerEtablissement", name="SupprimerEtablissement", methods={"GET"})
+     * @Route("/supprimerEtablissement/{parametre}", name="SupprimerEtablissement", methods={"GET"})
      */
-    public function supprimerEtablissement(EtablissementRepository $etablissementRepository): Response
+    public function supprimerEtablissement(EtablissementRepository $etablissementRepository, $parametre = "Parametre"): Response
      {
-         return $this->render('etablissement/SupprimerEtablissement.html.twig', [
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('etablissement/SupprimerEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByType($parametre),
+                ]);
+            }
+            else{
+                return $this->render('etablissement/SupprimerEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByVille($parametre),
+                ]);
+            }
+        }
+
+        return $this->render('etablissement/SupprimerEtablissement.html.twig', [
              'etablissements' => $etablissementRepository->findAll(),
-         ]);
+        ]);
      }
 
     /**
@@ -89,10 +102,23 @@ class EtablissementController extends AbstractController
     //-------------------------------Consuter------------------------------//
 
     /**
-     * @Route("/consulterEtablissement", name="ConsulterEtablissement", methods={"GET"})
+     * @Route("/consulterEtablissement/{parametre}", name="ConsulterEtablissement", methods={"GET"})
      */
-    public function consulterEtablissement(EtablissementRepository $etablissementRepository): Response
+    public function consulterEtablissement(EtablissementRepository $etablissementRepository, $parametre = "Parametre"): Response
      {
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('etablissement/ConsulterEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByType($parametre),
+                ]);
+            }
+            else{
+                return $this->render('etablissement/ConsulterEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByVille($parametre),
+                ]);
+            }
+        }
+
          return $this->render('etablissement/ConsulterEtablissement.html.twig', [
              'etablissements' => $etablissementRepository->findAll(),
          ]);
@@ -124,10 +150,23 @@ class EtablissementController extends AbstractController
     //-------------------------------Modifier------------------------------//
 
     /**
-     * @Route("/modifierEtablissement", name="ModifierEtablissement", methods={"GET"})
+     * @Route("/modifierEtablissement/{parametre}", name="ModifierEtablissement", methods={"GET"})
      */
-    public function modifierEtablissement(EtablissementRepository $etablissementRepository): Response
+    public function modifierEtablissement(EtablissementRepository $etablissementRepository, $parametre = "Parametre"): Response
     {
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('etablissement/ModifierEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByType($parametre),
+                ]);
+            }
+            else{
+                return $this->render('etablissement/ModifierEtablissement.html.twig', [
+                'etablissements' => $etablissementRepository->findByVille($parametre),
+                ]);
+            }
+        }
+
         return $this->render('etablissement/ModifierEtablissement.html.twig', [
             'etablissements' => $etablissementRepository->findAll(),
         ]);
@@ -153,6 +192,47 @@ class EtablissementController extends AbstractController
             'etablissement' => $etablissement,
             'form' => $form->createView(),
         ]);
+    }
+
+    //-------------------------------PDF------------------------------//
+
+    /**
+     * @Route("/pdf/{id}", name="pdfFunctionEtablissement", methods={"GET"})
+     */
+    public function pdfFunction(EtablissementRepository $etablissementRepository, Request $request,$id){
+
+        $etablissement = $etablissementRepository->findOneById($id);
+
+        $formulaireEtablissement = $this->createForm(EtablissementType::class, $etablissement);
+
+        $formulaireEtablissement->handleRequest($request);
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('etablissement/ConsulterEtablissementId.html.twig', [
+            'title' => "Fiche établissement", 'form' => $formulaireEtablissement->createView()
+        ]);
+        
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("ficheEtablissement.pdf", [
+            "Attachment" => true
+        ]);
+         
     }
 
 }

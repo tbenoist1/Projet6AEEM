@@ -6,7 +6,40 @@
 
         <div class="card" style="margin:15px;">
             <div class="card-header">
-                <H1 style="text-align:center;">Consulter établissement</H1>
+                <H1 style="text-align:center;">Consulter établissement</H1><BR>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-1">
+                            <h5>Trier par :</h5>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Type
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:'Primaire'}) }}">Primaire</a>
+                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:"Collège"}) }}">Collège</a>
+                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:"Lycée"}) }}">Lycée</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ville
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% for etablissement in etablissements %}
+                                    <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:etablissement.ville}) }}">{{ etablissement.ville }}</a>
+                                {% endfor %}
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table">

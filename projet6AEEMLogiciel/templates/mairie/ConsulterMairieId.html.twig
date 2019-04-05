@@ -49,7 +49,12 @@
                 </div>
                   {{ form_widget(form) }}
               {{ form_end(form) }}
-             <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a>
+
+
+              {% set id = app.session.get('id') %}
+
+              <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a><BR>
+              <a href="{{ path('pdfFunctionMairie', {id: id} ) }}">Imprimer</a>
               </div>
             </div>
 

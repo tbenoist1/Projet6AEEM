@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// Include Dompdf
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 /**
  * @Route("/gestionProfesseurs")
  */
@@ -93,9 +98,9 @@ class ProfesseurController extends AbstractController
      */
     public function consulterProfesseur(ProfesseurRepository $professeurRepository): Response
      {
-         return $this->render('professeur/ConsulterProfesseur.html.twig', [
+        return $this->render('professeur/ConsulterProfesseur.html.twig', [
              'professeurs' => $professeurRepository->findAll(),
-         ]);
+        ]);
      }
 
     /**
@@ -153,6 +158,47 @@ class ProfesseurController extends AbstractController
             'professeur' => $professeur,
             'form' => $form->createView(),
         ]);
+    }
+
+    //-------------------------------PDF------------------------------//
+
+    /**
+     * @Route("/pdf/{id}", name="pdfFunctionProfesseur", methods={"GET"})
+     */
+    public function pdfFunction(ProfesseurRepository $professeurRepository, Request $request,$id){
+
+        $professeur = $professeurRepository->findOneById($id);
+
+        $formulaireProfesseur = $this->createForm(ProfesseurType::class, $professeur);
+
+        $formulaireProfesseur->handleRequest($request);
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('professeur/ConsulterProfesseurId.html.twig', [
+            'title' => "Fiche professeur", 'form' => $formulaireProfesseur->createView()
+        ]);
+        
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+        
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("ficheProfesseur.pdf", [
+            "Attachment" => true
+        ]);
+         
     }
 
 }

@@ -19,6 +19,17 @@ class MairieRepository extends ServiceEntityRepository
         parent::__construct($registry, Mairie::class);
     }
 
+    public function findByZone($zone)
+    {
+        return $this->createQueryBuilder('m')
+            ->Where('m.zone = :zone')
+            ->setParameter('zone', $zone)
+            ->orderBy('m.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Mairie[] Returns an array of Mairie objects
     //  */

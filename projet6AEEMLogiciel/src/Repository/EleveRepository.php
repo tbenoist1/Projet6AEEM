@@ -19,6 +19,19 @@ class EleveRepository extends ServiceEntityRepository
         parent::__construct($registry, Eleve::class);
     }
 
+    public function findByNiveau($niveau)
+    {
+        return $this->createQueryBuilder('e')
+            ->Where('e.niveau = :niveau')
+            ->setParameter('niveau', $niveau)
+            ->orderBy('e.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
     // /**
     //  * @return Eleve[] Returns an array of Eleve objects
     //  */
