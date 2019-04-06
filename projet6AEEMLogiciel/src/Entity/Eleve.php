@@ -135,25 +135,21 @@ class Eleve
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $certificatMedical;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $ri;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $enveloppes;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $cheques;
 

@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// Include Dompdf
+use Dompdf\Dompdf;
+use Dompdf\Options;
+//Include Session
+use Symfony\Component\HttpFoundation\Session\Session;
+
 /**
  * @Route("/gestionEtablissements")
  */
@@ -83,7 +89,7 @@ class EtablissementController extends AbstractController
      }
 
     /**
-     * @Route("/supprimerEtablissement/{id}", name="SupprimerEtablissementId", methods={"DELETE"})
+     * @Route("/supprimerEtablissement/FicheEtablissement/{id}", name="SupprimerEtablissementId", methods={"DELETE"})
      */
     public function supprimerEtablissementId(Request $request, Etablissement $etablissement): Response
     {
@@ -125,23 +131,20 @@ class EtablissementController extends AbstractController
      }
 
     /**
-     * @Route("/consulterEtablissement/{id}", name="ConsulterEtablissementId", methods={"GET"})
+     * @Route("/consulterEtablissement/FicheEtablissement/{id}", name="ConsulterEtablissementId", methods={"GET"})
      */
-    public function consulterEtablissementId(Etablissement $etablissement, Request $request): Response
+    public function consulterEtablissementId(Etablissement $etablissement, Request $request, $id): Response
     {
-       $formulaireEtablissement = $this->createForm(EtablissementType::class, $etablissement);
+        //Ouverture de session afin de pouvoir récupérer l'id après l'actualisation de la page par la fonction PDF
+        $session = new Session();
+        $session->set('id', $id);
+
+        $formulaireEtablissement = $this->createForm(EtablissementType::class, $etablissement);
 
         $formulaireEtablissement->handleRequest($request);
-         if ($formulaireEtablissement->isSubmitted() && $formulaireetablissement->isValid())
-         {
-        
-            $manager->persist($etablissement);
-            $manager->flush();
-            // Rediriger l'utilisateur vers la page d'accueil
-            return $this->redirectToRoute('GestionEtablissements');
-         }
+         
         // Afficher la page présentant le formulaire d'ajout d'une etablissement
-        return $this->render('etablissement/ConsulterEtablissementId.html.twig', ['form' => $formulaireEtablissement->createView()]);
+        return $this->render('etablissement/ConsulterEtablissementId.html.twig', ['form' => $formulaireEtablissement->createView(), 'id' => $id]);
     }
 
 
@@ -173,7 +176,7 @@ class EtablissementController extends AbstractController
     }
 
     /**
-     * @Route("/modifierEtablissement/{id}", name="ModifierEtablissementId", methods={"GET","POST"})
+     * @Route("/modifierEtablissement/FicheEtablissement/{id}", name="ModifierEtablissementId", methods={"GET","POST"})
      */
     public function modifierEtablissementId(Request $request, Etablissement $etablissement): Response
     {

@@ -128,8 +128,13 @@
             </div>
             {{ form_widget(form) }}
             {{ form_end(form) }}
-            <a href="{{ path('ConsulterEleve') }}">Retour à la liste</a>
-        </div>
-    </div>
 
-{% endblock %}
+            {# Récupération de l'id mise en session #}
+            {% set id = app.session.get('id') %}
+
+                <a href="{{ path('ConsulterEleve') }}">Retour à la liste</a><BR>
+                <a href="{{ path('pdfFunctionEleve', {id: id} ) }}">Imprimer</a>
+            </div>
+        </div>
+
+    {% endblock %}

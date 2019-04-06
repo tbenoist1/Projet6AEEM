@@ -40,7 +40,7 @@ class Professeur
     /**
      * @ORM\Column(type="string", length=10)
      * @Assert\NotBlank     
-     * @Assert\Regex(pattern = "# [0-9]{5} #", message="Il semble y avoir un problème avec le code postal")
+     * @Assert\Regex(pattern = "#[0-9]{5}#", message="Il semble y avoir un problème avec le code postal")
      */
     private $codePostal;
 
@@ -93,25 +93,23 @@ class Professeur
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $toutesMaladies;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
+     * @Assert\NotNull
      */
     private $voiture;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $cv;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank
      */
     private $cj;
 

@@ -7,6 +7,53 @@
     <div class="card" style="margin:15px;">
         <div class="card-header">
             <H1 style="text-align:center;">Supprimer professeur</H1>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-1">
+                        <h5>Trier par :</h5>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="dropdown">
+                            <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Matière
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% set newArray = [] %}
+                                {% for professeur in professeurs %}
+                                    {% if professeur.matiere1 not in newArray %}
+                                        {% set newArray = newArray|merge([professeur.matiere1]) %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% for professeur in professeurs %}
+                                    {% if professeur.matiere2 not in newArray %}
+                                        {% set newArray = newArray|merge([professeur.matiere2]) %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% for matiere in newArray %}
+                                    <a class="dropdown-item" href="{{ path('SupprimerProfesseur', {parametre:matiere}) }}">{{ matiere }}</a>
+                                {% endfor %}
+                              </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Niveau
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{{ path('SupprimerProfesseur', {parametre:"Primaire"}) }}">Primaire</a>
+                          <a class="dropdown-item" href="{{ path('SupprimerProfesseur', {parametre:"Collège"}) }}">Collège</a>
+                          <a class="dropdown-item" href="{{ path('SupprimerProfesseur', {parametre:"Lycée"}) }}">Lycée</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table">

@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // Include Dompdf
 use Dompdf\Dompdf;
 use Dompdf\Options;
+//Include Session
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 /**
@@ -81,7 +83,7 @@ class EleveController extends AbstractController
      }
 
     /**
-     * @Route("/supprimerEleve/{id}", name="SupprimerEleveId", methods={"DELETE"})
+     * @Route("/supprimerEleve/FicheEleve/{id}", name="SupprimerEleveId", methods={"DELETE"})
      */
     public function supprimerEleveId(Request $request, Eleve $eleve): Response
     {
@@ -117,23 +119,20 @@ class EleveController extends AbstractController
      }
 
     /**
-     * @Route("/consulterEleve/{id}", name="ConsulterEleveId", methods={"GET"})
+     * @Route("/consulterEleve/FicheEleve/{id}", name="ConsulterEleveId", methods={"GET"})
      */
-    public function consulterEleveId(Eleve $eleve, Request $request): Response
+    public function consulterEleveId(Eleve $eleve, Request $request, $id): Response
     {
-       $formulaireEleve = $this->createForm(EleveType::class, $eleve);
+        //Ouverture de session afin de pouvoir récupérer l'id après l'actualisation de la page par la fonction PDF
+        $session = new Session();
+        $session->set('id', $id);
+        
+        $formulaireEleve = $this->createForm(EleveType::class, $eleve);
 
         $formulaireEleve->handleRequest($request);
-         if ($formulaireEleve->isSubmitted() && $formulaireEleve->isValid())
-         {
-            // Enregistrer la ressource en base de donnée
-            $manager->persist($eleve);
-            $manager->flush();
-            // Rediriger l'utilisateur vers la page d'accueil
-            return $this->redirectToRoute('GestionEleves');
-         }
+         
         // Afficher la page présentant le formulaire d'ajout d'une eleve
-        return $this->render('eleve/ConsulterEleveId.html.twig', ['form' => $formulaireEleve->createView()]);
+        return $this->render('eleve/ConsulterEleveId.html.twig', ['form' => $formulaireEleve->createView(), 'id' => $id]);
     }
 
 
@@ -158,7 +157,7 @@ class EleveController extends AbstractController
     }
 
     /**
-     * @Route("/modifierEleve/{id}", name="ModifierEleveId", methods={"GET","POST"})
+     * @Route("/modifierEleve/FicheEleve/{id}", name="ModifierEleveId", methods={"GET","POST"})
      */
     public function modifierEleveId(Request $request, Eleve $eleve): Response
     {

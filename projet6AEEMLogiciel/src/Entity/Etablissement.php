@@ -40,7 +40,7 @@ class Etablissement
     /**
      * @ORM\Column(type="string", length=10)
      * @Assert\NotBlank     
-     * @Assert\Regex(pattern = "# [0-9]{5} #", message="Il semble y avoir un problème avec le code postal")
+     * @Assert\Regex(pattern = "#[0-9]{5}#", message="Il semble y avoir un problème avec le code postal")
      */
     private $codePostal;
 
@@ -52,7 +52,6 @@ class Etablissement
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\Email
      */
     private $courriel;
 

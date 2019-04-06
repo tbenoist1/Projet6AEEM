@@ -98,10 +98,15 @@
                     {{ form_row(form.commentaires, {'attr' : {'readonly' : true}} ) }}
                 </div>
             </div>
-            
-            {{ form_widget(form) }}
+                {{ form_widget(form) }}
             {{ form_end(form) }}
-            <a href="{{ path('ConsulterProfesseur') }}">Retour à la liste</a>
+            
+            {# Récupération de l'id mise en session #}
+            {% set id = app.session.get('id') %}
+
+            <a href="{{ path('ConsulterProfesseur') }}">Retour à la liste</a><BR>
+            <a href="{{ path('pdfFunctionProfesseur', {id: id} ) }}">Imprimer</a>
+
         </div>
     </div>
 </div>

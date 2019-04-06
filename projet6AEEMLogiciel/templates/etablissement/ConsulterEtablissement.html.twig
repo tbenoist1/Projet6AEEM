@@ -32,8 +32,12 @@
                                 Ville
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% set newArray = [] %}
                                 {% for etablissement in etablissements %}
-                                    <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:etablissement.ville}) }}">{{ etablissement.ville }}</a>
+                                   {% if etablissement.ville not in newArray %}
+                                     <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:etablissement.ville}) }}">{{ etablissement.ville }}</a>
+                                   {% set newArray = newArray|merge([etablissement.ville]) %}
+                                   {% endif %}
                                 {% endfor %}
                               </div>
                             </div>

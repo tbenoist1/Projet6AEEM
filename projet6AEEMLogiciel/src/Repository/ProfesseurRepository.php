@@ -19,6 +19,43 @@ class ProfesseurRepository extends ServiceEntityRepository
         parent::__construct($registry, Professeur::class);
     }
 
+    public function findByNiveau($niveau)
+    {
+        return $this->createQueryBuilder('p')
+            ->Where('p.niveau = :niveau')
+            ->setParameter('niveau', $niveau)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByZone($zone)
+    {
+
+
+
+        return $this->createQueryBuilder('p')
+            ->Where('p.zonesInterventions[0] = :zone')
+            ->setParameter('zone', $zone)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByMatiere($matiere)
+    {
+        return $this->createQueryBuilder('p')
+            ->Where('p.matiere1 = :matiere')
+            ->OrWhere('p.matiere2 = :matiere')
+            ->setParameter('matiere', $matiere)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Professeur[] Returns an array of Professeur objects
     //  */

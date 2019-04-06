@@ -20,9 +20,9 @@
                                 Type
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:'Primaire'}) }}">Primaire</a>
-                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:"Collège"}) }}">Collège</a>
-                                <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:"Lycée"}) }}">Lycée</a>
+                                <a class="dropdown-item" href="{{ path('SupprimerEtablissement', {parametre:'Primaire'}) }}">Primaire</a>
+                                <a class="dropdown-item" href="{{ path('SupprimerEtablissement', {parametre:"Collège"}) }}">Collège</a>
+                                <a class="dropdown-item" href="{{ path('SupprimerEtablissement', {parametre:"Lycée"}) }}">Lycée</a>
                               </div>
                             </div>
                         </div>
@@ -32,8 +32,12 @@
                                 Ville
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% set newArray = [] %}
                                 {% for etablissement in etablissements %}
-                                    <a class="dropdown-item" href="{{ path('ConsulterEtablissement', {parametre:etablissement.ville}) }}">{{ etablissement.ville }}</a>
+                                   {% if etablissement.ville not in newArray %}
+                                     <a class="dropdown-item" href="{{ path('SupprimerEtablissement', {parametre:etablissement.ville}) }}">{{ etablissement.ville }}</a>
+                                   {% set newArray = newArray|merge([etablissement.ville]) %}
+                                   {% endif %}
                                 {% endfor %}
                               </div>
                             </div>

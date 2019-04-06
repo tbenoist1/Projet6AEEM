@@ -9,11 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// Include Dompdf required namespaces
+
+// Include Dompdf
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use Symfony\Component\HttpFoundation\Session\Session; // a virer ?
-
+//Include Session
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/gestionSubventions")
@@ -81,7 +82,7 @@ class MairieController extends AbstractController
      }
 
     /**
-     * @Route("/supprimerMairie/{id}", name="SupprimerMairieId", methods={"DELETE"})
+     * @Route("/supprimerMairie/FicheMairie/{id}", name="SupprimerMairieId", methods={"DELETE"})
      */
     public function supprimerMairieId(Request $request, Mairie $mairie): Response
     {
@@ -117,22 +118,21 @@ class MairieController extends AbstractController
      }
 
     /**
-     * @Route("/consulterMairie/{id}", name="ConsulterMairieId", methods={"GET"})
+     * @Route("/consulterMairie/FicheMairie/{id}", name="ConsulterMairieId", methods={"GET"})
      */
-    public function consulterMairieId(MairieRepository $mairieRepository, Mairie $mairie, Request $request, $id): Response
+    public function consulterMairieId(Mairie $mairie, Request $request, $id): Response
     {
 
+        //Ouverture de session afin de pouvoir récupérer l'id après l'actualisation de la page par la fonction PDF
         $session = new Session();
-        //$session->start();
         $session->set('id', $id);
 
-       $formulaireMairie = $this->createForm(MairieType::class, $mairie);
+        $formulaireMairie = $this->createForm(MairieType::class, $mairie);
 
         $formulaireMairie->handleRequest($request);
-dump($mairieRepository->findOneById($id));
 
         // Afficher la page présentant le formulaire d'ajout d'une mairie
-        return $this->render('mairie/ConsulterMairieId.html.twig', ['form' => $formulaireMairie->createView(), 'id' => $id,]);
+        return $this->render('mairie/ConsulterMairieId.html.twig', ['form' => $formulaireMairie->createView(), 'id' => $id]);
     }
 
 
@@ -157,7 +157,7 @@ dump($mairieRepository->findOneById($id));
     }
 
     /**
-     * @Route("/modifierMairie/{id}", name="ModifierMairieId", methods={"GET","POST"})
+     * @Route("/modifierMairie/FicheMairie/{id}", name="ModifierMairieId", methods={"GET","POST"})
      */
     public function modifierMairieId(Request $request, Mairie $mairie): Response
     {
@@ -200,7 +200,7 @@ dump($mairieRepository->findOneById($id));
         
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('mairie/ConsulterMairieId.html.twig', [
-            'title' => "pdf", 'form' => $formulaireMairie->createView()
+            'title' => "Fiche mairie", 'form' => $formulaireMairie->createView()
         ]);
         
         // Load HTML to Dompdf
@@ -213,7 +213,7 @@ dump($mairieRepository->findOneById($id));
         $dompdf->render();
 
         // Output the generated PDF to Browser (force download)
-        $dompdf->stream("mypdf.pdf", [
+        $dompdf->stream("ficheMairie.pdf", [
             "Attachment" => true
         ]);
     }

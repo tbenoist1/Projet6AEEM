@@ -51,6 +51,7 @@
               {{ form_end(form) }}
 
 
+              {# Récupération de l'id mise en session #}
               {% set id = app.session.get('id') %}
 
               <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a><BR>

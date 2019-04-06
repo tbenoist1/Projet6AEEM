@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // Include Dompdf
 use Dompdf\Dompdf;
 use Dompdf\Options;
+//Include Session
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 /**
@@ -65,17 +67,30 @@ class ProfesseurController extends AbstractController
     //-------------------------------Supprimer------------------------------//
 
     /**
-     * @Route("/supprimerProfesseur", name="SupprimerProfesseur", methods={"GET"})
+     * @Route("/supprimerProfesseur/{parametre}", name="SupprimerProfesseur", methods={"GET"})
      */
-    public function supprimerProfesseur(ProfesseurRepository $professeurRepository): Response
+    public function supprimerProfesseur(ProfesseurRepository $professeurRepository, $parametre = "Parametre"): Response
      {
-         return $this->render('professeur/SupprimerProfesseur.html.twig', [
-             'professeurs' => $professeurRepository->findAll(),
-         ]);
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('professeur/SupprimerProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByNiveau($parametre),
+                ]);
+            }
+            else{
+                return $this->render('professeur/SupprimerProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByMatiere($parametre),
+                ]);
+            }
+        }
+
+        return $this->render('professeur/SupprimerProfesseur.html.twig', [
+            'professeurs' => $professeurRepository->findAll(),
+        ]);
      }
 
     /**
-     * @Route("/supprimerProfesseur/{id}", name="SupprimerProfesseurId", methods={"DELETE"})
+     * @Route("/supprimerProfesseur/FicheProfesseur/{id}", name="SupprimerProfesseurId", methods={"DELETE"})
      */
     public function supprimerProfesseurId(Request $request, Professeur $professeur): Response
     {
@@ -94,33 +109,43 @@ class ProfesseurController extends AbstractController
     //-------------------------------Consuter------------------------------//
 
     /**
-     * @Route("/consulterProfesseur", name="ConsulterProfesseur", methods={"GET"})
+     * @Route("/consulterProfesseur/{parametre}", name="ConsulterProfesseur", methods={"GET"})
      */
-    public function consulterProfesseur(ProfesseurRepository $professeurRepository): Response
+    public function consulterProfesseur(ProfesseurRepository $professeurRepository, $parametre = "Parametre"): Response
      {
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('professeur/ConsulterProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByNiveau($parametre),
+                ]);
+            }
+            else{
+                return $this->render('professeur/ConsulterProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByMatiere($parametre),
+                ]);
+            }
+        }
+
         return $this->render('professeur/ConsulterProfesseur.html.twig', [
              'professeurs' => $professeurRepository->findAll(),
         ]);
      }
 
     /**
-     * @Route("/consulterProfesseur/{id}", name="ConsulterProfesseurId", methods={"GET"})
+     * @Route("/consulterProfesseur/FicheProfesseur/{id}", name="ConsulterProfesseurId", methods={"GET"})
      */
-    public function consulterProfesseurId(Professeur $professeur, Request $request): Response
+    public function consulterProfesseurId(Professeur $professeur, Request $request, $id): Response
     {
-       $formulaireprofesseur = $this->createForm(ProfesseurType::class, $professeur);
+        //Ouverture de session afin de pouvoir récupérer l'id après l'actualisation de la page par la fonction PDF
+        $session = new Session();
+        $session->set('id', $id);
+
+        $formulaireprofesseur = $this->createForm(ProfesseurType::class, $professeur);
 
         $formulaireprofesseur->handleRequest($request);
-         if ($formulaireprofesseur->isSubmitted() && $formulaireprofesseur->isValid())
-         {
-            // Enregistrer la ressource en base de donnée
-            $manager->persist($professeur);
-            $manager->flush();
-            // Rediriger l'utilisateur vers la page d'accueil
-            return $this->redirectToRoute('GestionProfesseurs');
-         }
+    
         // Afficher la page présentant le formulaire d'ajout d'une professeur
-        return $this->render('professeur/ConsulterProfesseurId.html.twig', ['form' => $formulaireprofesseur->createView()]);
+        return $this->render('professeur/ConsulterProfesseurId.html.twig', ['form' => $formulaireprofesseur->createView(), 'id' => $id]);
     }
 
 
@@ -129,17 +154,30 @@ class ProfesseurController extends AbstractController
     //-------------------------------Modifier------------------------------//
 
     /**
-     * @Route("/modifierProfesseur", name="ModifierProfesseur", methods={"GET"})
+     * @Route("/modifierProfesseur/{parametre}", name="ModifierProfesseur", methods={"GET"})
      */
-    public function modifierProfesseur(ProfesseurRepository $professeurRepository): Response
+    public function modifierProfesseur(ProfesseurRepository $professeurRepository, $parametre = "Parametre"): Response
     {
+        if($parametre != "Parametre"){
+            if(($parametre == "Primaire") || ($parametre == "Collège") || ($parametre == "Lycée")){        
+                return $this->render('professeur/ModifierProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByNiveau($parametre),
+                ]);
+            }
+            else{
+                return $this->render('professeur/ModifierProfesseur.html.twig', [
+                'professeurs' => $professeurRepository->findByMatiere($parametre),
+                ]);
+            }
+        }
+
         return $this->render('professeur/ModifierProfesseur.html.twig', [
             'professeurs' => $professeurRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/modifierProfesseur/{id}", name="ModifierProfesseurId", methods={"GET","POST"})
+     * @Route("/modifierProfesseur/FicheProfesseur/{id}", name="ModifierProfesseurId", methods={"GET","POST"})
      */
     public function modifierProfesseurId(Request $request, Professeur $professeur): Response
     {
