@@ -13,12 +13,12 @@
                 Zone
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{ path('ConsulterMairie', { zone:'BAB'}) }}">BAB</a>
-                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Pays Basque Intérieur"}) }}">Pays Basque Intérieur</a>
-                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Sud Pays Basque"}) }}">Sud Pays Basque</a>
-                <a class="dropdown-item" href="{{ path('ConsulterMairie',{zone:"Sud Landes"}) }}">Sud Landes</a>
+                <a class="dropdown-item" href="{{ path('SupprimerMairie', {zone:'BAB'}) }}">BAB</a>
+                <a class="dropdown-item" href="{{ path('SupprimerMairie', {zone:"Pays Basque Intérieur"}) }}">Pays Basque Intérieur</a>
+                <a class="dropdown-item" href="{{ path('SupprimerMairie', {zone:"Sud Pays Basque"}) }}">Sud Pays Basque</a>
+                <a class="dropdown-item" href="{{ path('SupprimerMairie', {zone:"Sud Landes"}) }}">Sud Landes</a>
               </div>
-            </div>+
+            </div>
         </div>
         <div class="card-body">
             <table class="table">
@@ -26,7 +26,7 @@
                     <tr>
                         <th>Ville</th>
                         <th>Zone</th>
-                        <th>LienDossier</th>
+                        <th>Lien Dossier</th>
                         <th></th>
                     </tr>
                 </thead>

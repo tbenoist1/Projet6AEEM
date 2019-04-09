@@ -39,11 +39,13 @@ class Mairie
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Url
+     * @Assert\NotBlank
      */
     private $lienDossier;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $courriel;
 

@@ -54,8 +54,9 @@
               {# Récupération de l'id mise en session #}
               {% set id = app.session.get('id') %}
 
-              <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a><BR>
-              <a href="{{ path('pdfFunctionMairie', {id: id} ) }}">Imprimer</a>
+              <a href="{{ path('pdfFunctionMairie', {id: id} ) }}">Imprimer</a><BR><BR>
+              <a href="{{ path('ConsulterMairie') }}">Retour à la liste</a>
+              
               </div>
             </div>
 
