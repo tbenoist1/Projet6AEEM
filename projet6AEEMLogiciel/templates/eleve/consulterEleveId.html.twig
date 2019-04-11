@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche Elève{% endblock %}
+{% block title %}Fiche Eleve{% endblock %}
 
     {% block contenu %}
 
         <div class="card" style="margin:15px;">
             <div class="card-header">
-                <H1 style="text-align:center;">Fiche élève</H1>
+                <H1 style="text-align:center;">Fiche eleve</H1>
             </div>
             <div class="card-body">
                 {{ form_start(form) }}
@@ -22,7 +22,7 @@
                                 {{ form_row(form.anneeSuivie, {'label' : "Année", 'attr' : {'readonly' : true}} ) }}
                             </div>
                         </div>
-                        <h5 class="card-title">Informations générales</h5>
+                        <h5 class="card-title">Informations generales</h5>
                         <div class="row">
                             <div class="col-md-4">
                                 {{ form_row(form.nom, {'attr' : {'readonly' : true}} ) }}
@@ -59,10 +59,10 @@
                             {{ form_row(form.courriel, {'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.telephoneO, {'label' : "Téléphone Obligatoire", 'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.telephoneO, {'label' : "Telephone Obligatoire", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
-                            {{ form_row(form.telephoneS, {'label' : "Téléphone Optionnel", 'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.telephoneS, {'label' : "Telephone Optionnel", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
                         </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            {{ form_row(form.dureeIntervention, {'label' : "Durée intervention", 'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.dureeIntervention, {'label' : "Duree intervention", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-3">
                             {{ form_row(form.lieuIntervention, {'label' : "Lieu intervention", 'attr' : {'readonly' : true}} ) }}
@@ -95,7 +95,7 @@
                         <div class="col-md-6">
                         </div>
                         <div class="col-md-6">
-                            {{ form_row(form.contactNum, {'label' : "Téléphone contact", 'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.contactNum, {'label' : "Telephone contact", 'attr' : {'readonly' : true}} ) }}
                         </div>
                     </div>
                     <div class="row">
@@ -119,7 +119,7 @@
                             {{ form_row(form.enveloppes, {'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-2">
-                            {{ form_row(form.cheques, {'label' : "Chèques", 'attr' : {'readonly' : true}} ) }}
+                            {{ form_row(form.cheques, {'label' : "Cheques", 'attr' : {'readonly' : true}} ) }}
                         </div>
                         <div class="col-md-4">
                         </div>
